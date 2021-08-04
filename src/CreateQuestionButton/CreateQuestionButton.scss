@@ -1,0 +1,136 @@
+@import "../index";
+
+.CreateQuestionButtonStyles {
+  background-image: linear-gradient(#639fe4, #0d74eb);
+  color: white;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: fixed;
+  top: 80%;
+  right: 0;
+  margin: 1rem;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 50px;
+  z-index: 1000;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  box-shadow: $box-shadow;
+
+  @media (min-width: $tablet) {
+  }
+  @media (min-width: $laptop) {
+    display: block;
+  }
+
+  @include borderFadeEffect;
+}
+
+#ModalIsOpenId {
+  // background: rgb(0, 0, 0);
+
+  // display: grid;
+  // place-items: center;
+
+  & .content {
+    @media (min-width: $laptop) {
+    }
+    & form {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      // place-items: center;
+      text-transform: capitalize !important;
+
+      & textarea {
+        width: 90%;
+        height: 20%;
+        margin: 3rem auto;
+        padding: 1rem;
+        color: inherit;
+        font-size: 1rem;
+        border: 0.1rem rgba(128, 128, 128, 0.219) solid;
+        outline: none;
+        &::placeholder {
+          color: inherit;
+        }
+      }
+    }
+    & .questionProper {
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: $radius;
+      padding: 1rem 0;
+      background: white;
+      grid-row: 1/-1;
+      height: 100vh;
+      position: relative;
+      @media (min-width: $laptop) {
+        height: 90vh;
+        grid-row: 1 / span 1;
+      }
+
+      & .questionButtonWrapper {
+        text-transform: capitalize;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        background: transparent;
+        scale: 0.8;
+      }
+      & .sendThis {
+        position: absolute;
+        right: 3%;
+        top: 0;
+
+        &:hover img {
+          rotate: 40deg;
+        }
+      }
+      .fa-times {
+        position: absolute;
+        left: 2%;
+        top: 0;
+        font-size: 3rem;
+        font-weight: 200;
+        color: red;
+      }
+
+      & .header {
+        margin-top: 3rem;
+        color: $whiteModeBackground;
+        font-weight: 200;
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 4rem;
+          height: 0.2rem;
+          top: 0;
+
+          background: $officialColor;
+        }
+      }
+    }
+    & .more {
+      background-image: url(../assets/Logo2.png);
+      background-position: center;
+      background-size: cover;
+      display: none;
+      @media (min-width: $laptop) {
+        display: block;
+      }
+    }
+  }
+}
+#ModalIsCloseId {
+  background: rgb(145, 130, 130);
+  display: none;
+}
+
+// //
+// -webkit-filter: blur(5px);
+// -moz-filter: blur(5px);
+// -o-filter: blur(5px);
+// -ms-filter: blur(5px);
+// filter: blur(5px);

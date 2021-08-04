@@ -1,0 +1,110 @@
+@import "../index";
+
+.FormStyle {
+  height: fit-content;
+  background: rgb(255, 255, 255);
+  width: 80%;
+  place-self: center;
+  box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.062);
+  border-radius: 0.5rem;
+  z-index: 2;
+  cursor: pointer !important;
+  animation-name: slideFromTop;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  transition: all 0.2s ease-in-out;
+  backface-visibility: hidden;
+
+  @media (min-width: $tablet) {
+    grid-column: 2/-1;
+    grid-row: 1 / span 2;
+    z-index: 3;
+    align-self: start;
+  }
+  @media (min-width: $ipad-pro) {
+    width: 60%;
+  }
+  @media (min-width: $laptop) {
+    width: 55%;
+    margin-top: 5rem;
+  }
+
+  .nav-tabs {
+    height: fit-content;
+    li {
+      display: inline-block;
+      font-size: 0.7rem;
+      color: black;
+      margin: 1rem;
+      padding: 0.4rem;
+
+      & a {
+        color: inherit;
+      }
+    }
+  }
+
+  &.FormStyle i {
+    color: white;
+    font-size: 0.9rem;
+  }
+  &.FormStyle h1 {
+    color: $navbarWhiteModeTextColor;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    margin-top: 0;
+  }
+
+  .Form {
+    background: transparent;
+    height: 100%;
+    padding: 1rem 0;
+
+    & span {
+      letter-spacing: 0;
+
+      transition: letter-spacing 100ms ease;
+
+      &:hover {
+        letter-spacing: 0rem;
+      }
+    }
+
+    .form-group {
+      background: transparent;
+      margin: 0.5rem 0;
+    }
+  }
+
+  .Form input {
+    transition: width 400ms cubic-bezier(0.82, 0.16, 0.56, 0.44);
+    margin: 0rem auto;
+    height: 2rem;
+    background: white;
+    width: 60%;
+    border: 0.1rem solid $borderWhiteModeColor;
+    border-radius: 0.5rem;
+    padding: 0rem 2rem;
+    outline: none !important;
+    display: block;
+
+    &::placeholder {
+      font-weight: 300;
+    }
+
+    @media (min-width: $laptop) {
+      width: 45%;
+    }
+  }
+
+  .Form p {
+    color: black;
+    font-size: 0.7rem;
+    margin: 0.2rem auto;
+    text-align: center;
+  }
+  a {
+    color: $loginColor;
+    text-decoration: none;
+  }
+}

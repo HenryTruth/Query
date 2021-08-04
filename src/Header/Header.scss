@@ -1,0 +1,92 @@
+@import "../index";
+
+.HeaderStyle {
+  height: 60vh;
+  width: 100%;
+  background: $whiteMode;
+  color: $whiteModeParaTextColor;
+  display: grid;
+  position: relative;
+  grid-row: 1 / span 1;
+
+  .curvedWithFormSvg {
+    scale: 0.9;
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    display: none;
+    @media (min-width: $tablet) {
+      display: block;
+    }
+  }
+
+  @media (min-width: $tablet) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: $laptop) {
+    height: 70vh;
+    width: 80%;
+    padding: auto 6rem;
+    margin: 1rem auto;
+    grid-column: 1/-1;
+    // margin-top: 4rem;
+  }
+  @media (min-width: $laptop-mini) {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .curvedBoxWithForm {
+    display: none;
+
+    @media (min-width: $tablet) {
+      background: transparent;
+      display: block;
+      justify-self: end;
+      grid-column: 2 / span 1;
+      grid-row: 1 / span 1;
+      scale: 0.8;
+    }
+    @media (min-width: $laptop) {
+      scale: 0.9;
+    }
+  }
+
+  .brandDesc {
+    animation-name: disappear;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    display: none;
+    font-family: $roboto;
+    @media (min-width: $tablet) {
+      position: relative;
+      background: transparent;
+      display: block;
+      height: fit-content;
+      place-self: center;
+      padding: 1rem;
+      z-index: 2;
+      h1 {
+        color: #639fe4;
+        font-size: 3rem;
+        font-weight: 100;
+        text-transform: uppercase;
+        letter-spacing: 0.5rem;
+        margin-bottom: 3rem;
+      }
+      p {
+        margin: 1rem 3rem;
+        color: inherit;
+        font-weight: 600;
+      }
+
+      & .curvedbox {
+        height: fit-content;
+        width: 100%;
+        background: transparent;
+      }
+    }
+  }
+}
