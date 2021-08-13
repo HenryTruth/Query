@@ -80,6 +80,7 @@ export const requestAnswerDetail = (questionId) => {
                     likeNum:response.data.like_num
 
                 }
+                console.log(answerData, 'answerData for answer')
                 questionArr.push(answerData)
             }
             console.log(questionArr, 'lolo')

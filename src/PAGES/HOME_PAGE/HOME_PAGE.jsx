@@ -1,5 +1,5 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { Link, useLocation } from "react-router-dom";
 import "./HOME_PAGE.scss";
 import QuestionBox from "../../QuestionBox/QuestionBox";
 import CurrentPageIdentifier from "../../CurrentPageIdentifier/CurrentPageIdentifier";
