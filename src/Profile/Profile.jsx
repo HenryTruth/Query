@@ -56,12 +56,6 @@ export default function Profile({ children }) {
     closeModal();
   };
 
-  const submitBio = (event, bioRef) => {
-    event.preventDefault();
-    setBio(bioRef.current.value);
-
-    console.log(bio);
-  };
 
   // useEffect(() => {
     
@@ -105,9 +99,8 @@ export default function Profile({ children }) {
         <Modal specialId={modalState.useThisId}>
           <div className="bioContent">
             <h3>start editing your bio</h3>
-            <form onSubmit={submitBio}>
+            <form>
               <textarea
-                ref={bioRef}
                 onChange={(event) => {
                   setBio(event.target.value);
                 }}

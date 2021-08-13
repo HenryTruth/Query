@@ -43,7 +43,7 @@ export const likeQuestion = (response, id, post) => {
                     dispatch(requestQuestionDetails())
                 }else if(post === 'answer'){
                     dispatch(requestAnswerDetail())
-                }else if (post=='comment'){
+                }else if (post ==='comment'){
                     dispatch(requestCommentDetail())
                 }
             })
