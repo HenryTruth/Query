@@ -37,14 +37,14 @@ export default function Footer({ children }) {
         <h4 className="mediaHeader">Follow us on socials</h4>
         <div className="socialMedia">
           <a href="/">
-            <img src="https://img.icons8.com/color/50/000000/instagram-new--v1.png" />
+            <img src="https://img.icons8.com/color/50/000000/instagram-new--v1.png" alt='icon' />
           </a>
 
           <a href="/">
-            <img src="https://img.icons8.com/color/50/000000/twitter--v1.png" />
+            <img src="https://img.icons8.com/color/50/000000/twitter--v1.png" alt='icon' />
           </a>
           <a href="/">
-            <img src="https://img.icons8.com/color/50/000000/facebook-new.png" />
+            <img src="https://img.icons8.com/color/50/000000/facebook-new.png" alt='icon' />
           </a>
         </div>
       </div>
@@ -62,7 +62,7 @@ export default function Footer({ children }) {
         <h4 className="mediaHeader">Download the App</h4>
         <div className="downloadMedia">
           <div className="media1">
-            <img src="https://img.icons8.com/color/48/000000/google-play.png" />
+            <img src="https://img.icons8.com/color/48/000000/google-play.png" alt='icon'/>
             <p>Google Play</p>
           </div>
           <div className="media2">
