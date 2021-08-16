@@ -1,0 +1,24 @@
+@import "../index";
+
+.SquareButtonStyles {
+  background: $officialColor;
+  padding: 1rem 2rem;
+  color: white;
+  border: none;
+  border-radius: $radius;
+  outline: none;
+  text-transform: capitalize;
+  margin-right: 1rem;
+  font-size: 0.7rem;
+  font-weight: normal;
+  cursor: pointer;
+  text-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.322);
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (min-width: $tablet) {
+    font-size: 1rem;
+  }
+}

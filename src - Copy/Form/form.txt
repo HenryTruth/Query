@@ -1,0 +1,188 @@
+import React, { useState, useCallback } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import * as actions from '../store/actions/index';
+import { BrowserRouter as Router, useLocation } from "react-router-dom";
+
+
+import "./Form.scss";
+import Button from "../Button/Button";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useForm } from "react-hook-form";
+
+export default function Form({ children }) {
+  let location = useLocation();
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSignup, setiSignup] = useState({
+    signUp:false
+  })
+
+
+  //set a state, to check if login button is clicked
+  const [isLoginClicked, setIsLoginClicked] = useState({
+    clicked: false,
+  });
+
+  //a function that toggles the login clicked or not.
+
+  const showLogin = () => {
+    //copy the original state
+    const copiedLoginState = isLoginClicked.clicked;
+
+    //set it to what the initial state is not
+    setIsLoginClicked({
+      clicked: true,
+    });
+  };
+
+  const showSignup = () => {
+    //copy the original state
+    const copiedLoginState = isLoginClicked.clicked;
+
+    //set it to what the initial state is not
+    setIsLoginClicked({
+      clicked: false,
+    });
+
+    setiSignup({
+      signUp:true
+    });
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, message },
+    reset,
+  } = useForm();
+
+  
+
+  const stateToProps = useSelector((state) => {
+    return {
+      loading:state.auth.loading,
+      error:state.auth.error,
+      isAuthenticated:state.auth.token !== null,
+      authRedirectPath: state.auth.authRedirectPath
+    }
+  })
+
+  const dispatch = useDispatch()
+
+  const dispatchToProps = useCallback(dispatch => {
+    return {
+        onAuth: ( email, password, isSignup ) => dispatch( actions.auth( email, password, isSignup )),
+        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
+    };
+  },[dispatch])
+
+
+  const SubmitHandler = (event) => {
+    event.preventDefault()
+    dispatchToProps.onAuth(username,email,password,isSignup)
+  }
+
+  let authRedirect = null;
+  if (stateToProps.isAuthenticated) {
+      authRedirect = <Redirect to={stateToProps.authRedirectPath}/>
+  }
+
+  return (
+    <React.Fragment>
+    <div className="FormStyle">
+      <ul className="nav nav-tabs">
+        <li className="active">
+          <a onClick={showLogin} href="#">
+            lOGIN
+          </a>
+        </li>
+        <li>
+          <a onClick={showSignup} href="#" className="signUpHeader">
+            SIGN UP
+          </a>
+        </li>
+      </ul>
+      <form
+        className="Form"
+        autoComplete="off"
+        onSubmit={SubmitHandler}
+        // onSubmit={handleSubmit(isLoginClicked.clicked ? onLogin : onRegister)}
+      >
+        <h1> {isLoginClicked.clicked ? "login" : "Sign up"}</h1>
+        <input
+          {...register("username", {
+            required: {
+              value: true,
+              message: "username is required ",
+            },
+            minLength: {
+              value: 4,
+              message: "username must be more than 4 characters",
+            },
+            maxLength: {
+              value: 20,
+              message: "username must not be more than 20 characters",
+            },
+          })}
+          type="text"
+          placeholder="Username"
+        />
+        {errors.username && (
+          <i style={{ color: "red" }}>{errors.username.message}</i>
+        )}
+        {!isLoginClicked.clicked ? (
+          <input
+            type="email"
+            placeholder="Email"
+            {...register("email", {
+              required: {
+                value: true,
+                message: "email is required ",
+              },
+            })}
+          />
+        ) : null}
+        {errors.email && <i style={{ color: "red" }}>{errors.email.message}</i>}
+        <input
+          type="password"
+          placeholder="Password"
+          {...register("password", {
+            required: {
+              value: true,
+              message: "password is required ",
+            },
+            minLength: {
+              value: 5,
+              message: "password must be more than 5 characters",
+            },
+            maxLength: {
+              value: 20,
+              message: "password must not be more than 20 characters",
+            },
+          })}
+        />
+        {errors.password && (
+          <i style={{ color: "red", display: "block" }}>
+            {errors.password.message}
+          </i>
+        )}
+
+        <Button type="submit">
+          <span>{isLoginClicked.clicked ? "login" : "Sign up"}</span>
+          <i className="fas fa-arrow-circle-right"></i>
+        </Button>
+      </form>
+    </div>
+    </React.Fragment>
+  );
+}
+
+
+
+
+
+

@@ -12,7 +12,7 @@ export const getQuestionDetails = (questionData) => {
 }
 
 
-export const requestQuestionDetails = (pageNumber) => {
+export const requestQuestionDetails = (pageNumber, questionDataState) => {
     const questionArr = []
     let questionData;
     let d = 0

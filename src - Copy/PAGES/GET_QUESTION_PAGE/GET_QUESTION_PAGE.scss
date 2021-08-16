@@ -1,0 +1,149 @@
+@import "../../index";
+.GET_QUESTION_PAGE {
+background: white;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  h4 {
+    margin-top: 5rem;
+  }
+
+  & .questionWrapper {
+    border-radius: 0.5rem;
+    padding: 0.1rem;
+    box-shadow: $box-shadow;
+ 
+    margin: 0 auto;
+    height: 100vh;
+    overflow-y: scroll;
+    position: relative;
+    overflow-x: hidden;
+
+    @media (min-width: $laptop) {
+    
+    }
+ 
+
+    & .answerWrapper {
+      box-shadow: $box-shadow;
+      border-radius: 0.5rem;
+      padding: 0.1rem;
+
+      height: fit-content;
+      margin: 0.5rem auto;
+    
+
+
+      & .EnterYourCommentBlockArea {
+        margin: 1rem auto;
+        background: transparent;
+        height: 2rem;
+      
+  
+        display: grid;
+        grid-template-columns:.1fr .9fr;
+        grid-template-rows: 1fr;
+grid-column-gap: .4rem;
+
+        & .currentUserImage{
+          justify-self: end;
+          border-radius: 50px;
+height: inherit;
+width: 2rem;
+          & img{
+width: 100%;
+height: 100%;
+border-radius: inherit;
+          }
+        }
+
+        & .inputWrapperArea{
+         
+         & form 
+         {
+          height: 100%;
+
+          display: grid;
+          grid-template-columns:.9fr .1fr;
+          grid-template-rows:1fr;
+          grid-column-gap: .4rem;
+
+          & .pcbInputBox{
+         
+          background-color: white;
+          width: 100%;
+          font-weight: 40;
+          font-size: 0.7rem;
+         padding: 0 .5rem;
+          border: 1px solid rgba(58, 57, 57, 0.185);
+         
+          outline: none;
+          border-radius: 0.4rem;
+          }
+          & .pcdButton{
+            background: transparent;
+            border: none;
+            outline: none;
+            // padding: 0.1rem;
+            display: grid;
+            // justify-items: start;
+            width: 5rem;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+  
+            &:hover img {
+              rotate: 50deg;
+            }
+            @media (min-width: $laptop) {
+        
+            }
+
+          }
+        }
+        }
+      }
+
+
+      @media (min-width: $tablet) {
+        width: 100%;
+      }
+    }
+    @media (min-width: $laptop) {
+      width: 80%;
+      margin-top: 3rem;
+      // padding: 4rem auto;
+    }
+  }
+  h5 {
+    color: $borderDarkModeColor;
+    font-size: 0.7rem;
+    letter-spacing: 0;
+    margin: 1rem 0;
+    padding: 1rem;
+
+    transition: letter-spacing 100ms ease;
+
+    &:hover {
+      letter-spacing: 0.1rem;
+    }
+  }
+  .hide {
+    padding: 1rem 0;
+    -moz-transition: height 500ms ease-in;
+    // background: black;
+    transform-origin: top;
+    transition: height 500ms ease-in;
+    background: red !important;
+    height: fit-content;
+    width: 80%;
+    &-true {
+      display: none;
+    }
+    &-false {
+      display: block;
+    }
+  }
+}

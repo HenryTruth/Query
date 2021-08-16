@@ -1,0 +1,40 @@
+@import "../../index";
+
+.SELECTED_POST {
+  grid-column: 1/-1;
+
+  .feedActivity {
+    background: transparent;
+    height: fit-content;
+    width: 95%;
+    margin: 0 auto;
+    // padding: 2rem 0;
+    border-bottom: 0.1rem solid #27262633;
+
+    @media (min-width: $tablet) {
+      width: 90%;
+    }
+    @media (min-width: $laptop) {
+      width: 80%;
+    }
+
+    .questionActivity {
+      height: fit-content;
+      border-bottom: 0.1rem solid #2726260c;
+    }
+    .answerActivity {
+      border-radius: 0.5rem;
+      width: 90%;
+      margin: 1rem auto;
+      height: fit-content;
+      box-shadow: $box-shadow;
+    }
+  }
+
+  @media (min-width: $laptop) {
+    // grid-row: 1/span 1;
+    grid-column: 2/-1;
+    overflow: scroll;
+    height: 100vh;
+  }
+}

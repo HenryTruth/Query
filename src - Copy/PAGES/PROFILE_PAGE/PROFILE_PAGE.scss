@@ -1,0 +1,66 @@
+@import "../../index";
+
+.ProfilePage {
+  position: relative;
+  background: transparent;
+  width: 100%;
+  margin: 0 auto;
+  @media (min-width: $laptop) {
+    width: 70%;
+    margin: 0 auto;
+    padding: 0 3rem;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  & .questionWrapper {
+    position: relative;
+    & i.deleteQuestion {
+      transition: all 100ms;
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: black;
+      font-size: 1rem;
+      margin-right: 1rem;
+    }
+
+    & .smallModalOpen {
+      position: absolute;
+      top: 10%;
+      right: 0%;
+      height: fit-content;
+      width: 5rem;
+      background-color: white;
+      box-shadow: $box-shadow;
+      border-radius: 0.5rem;
+      font-size: 0.7rem;
+      & ul li {
+        list-style-type: none;
+        margin: 0.4rem auto;
+      }
+    }
+    & .smallModalClose {
+      display: none;
+    }
+  }
+}
+
+#ModalIsOpenId {
+  background: rgb(0, 0, 0);
+  display: grid;
+  place-items: center;
+
+  .deleteContent {
+    background: white;
+    padding: 2rem;
+
+    h3 {
+      margin: 1rem;
+    }
+  }
+}
+
+#ModalIsCloseId {
+  display: none;
+}

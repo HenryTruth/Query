@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from "react";
+import React, {useCallback} from "react";
 import "./SideBar.scss";
 import { Link } from "react-router-dom";
 import user4 from "../assets/user4.jpg";
@@ -10,22 +10,6 @@ export default function SideBar() {
     state.modesReducer)
 
   const dispatch = useDispatch()
-  const userState = useSelector(state => state.profileReducer.userDetail)
-
-  // useEffect(() => {
-    
-  //   console.log(userState, 'tototo')
-    
-  //     dispatch(actions.requestUserDetails(localStorage.getItem('username')))
-
-  // },[])
-
-  let image = user4
-
-  if(userState.length >= 1){
-    console.log(userState[0].image, 'does it exist')
-    image = `https://res.cloudinary.com/dyojwpsfb/${userState[0].image}`
-  }
 
 
   // console.log(location.pathname, "from");
@@ -76,10 +60,10 @@ export default function SideBar() {
                   }}
                 >
                   <div className="profilePicture">
-                    <img src={image} alt="" />
+                    <img src={user4} alt="" />
                   </div>
                   <div className="profileName">
-                    <h5>{localStorage.getItem('username')}</h5>
+                    <h5>Gosling Mark</h5>
                   </div>
                   <div className="profileAvater"></div>
                 </div>

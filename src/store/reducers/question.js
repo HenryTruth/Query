@@ -8,10 +8,10 @@ const questionState = {
 }
 
 const getQuestion = (state, action) => {
-    state.recentlyAskedQuestions.push(...action.questionData)
     return updateObject(state,{
-        recentlyAskedQuestions:state.recentlyAskedQuestions
+        recentlyAskedQuestions:action.questionData
     })
+
 }
 
 

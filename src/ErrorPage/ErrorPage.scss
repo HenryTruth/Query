@@ -1,0 +1,44 @@
+.ErrorPage{
+        height:100vh;
+        background-image:url('../assets/cat.jpg');
+        background-size:cover;
+        position:relative;
+
+        h1{
+            margin-top:1rem;   
+            letter-spacing:.2rem;
+            font-size:2.8rem;
+
+           span{
+                color:#976D55;
+                font-size:5rem;
+                margin-right:-.5rem;
+            }
+        }
+        h4{
+            position:absolute;
+            top:40%;
+            letter-spacing:.2rem;
+            font-size:1.7rem;
+            right:5%;
+        }
+        ul{
+            background:#510E0D;
+            padding:2rem;
+            position:absolute;
+            text-align:justify;
+            color:white;
+            top:65%;
+            // letter-spacing:.1rem;
+            right:1%;
+
+            a{
+                color:#5F98DA;
+            }
+
+            li:last-child{
+                font-size:.8rem;
+                margin-top:1rem;
+            }
+        }
+}

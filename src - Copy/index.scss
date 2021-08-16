@@ -1,0 +1,140 @@
+@import "./keyFrames/keyFrames.scss";
+
+@mixin borderFadeEffect {
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.2rem 1.4rem rgba(0, 0, 0, 0.171);
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    background: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.1s ease-in-out;
+    z-index: -1;
+  }
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 0.5rem 1.4rem rgba(0, 0, 0, 0.151);
+
+    &::after {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+}
+
+//resposive breakpoing
+//colors
+//----DARK MODE -----
+$borderDarkModeColor: #a39a9a;
+$darkMode: #1c1b22;
+$navbarDarkModeTextColor: #85bdff;
+$darkModeTextColor: #fffafa;
+
+//---WHITE MODE -----
+$whiteMode: #f0f0f0;
+$borderWhiteModeColor: #6099db;
+$whiteModeNavbarBg: rgba(255, 255, 255, 0.63);
+$whiteModeParaTextColor: #1a1919e7;
+$navbarWhiteModeTextColor: #507cc6;
+$whiteModeBackground: #fffafa;
+
+//Brand Colors
+$box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.041);
+
+$brandColor: #6099db;
+$navbarHoverColor: #7eb1eb;
+$buttonTextColor: #ffffff;
+$footerClosure: #0f0f0f;
+$aboutBackground: #6099db;
+$textColor: #ffffff;
+$aboutBackground2: #8fbaeb;
+$profileBorder: #c8c8c8;
+$officialColor: #639fe4;
+$officialWhite: #ffffff;
+$initialsColor: #000000b7;
+$initialsColorHeader: #0a0a0af8;
+$fientColor: #af0808;
+//FORM Colors
+$signUpColor: #6099db;
+$formColor: #ffffff;
+$buttonColor: #6099db;
+$loginColor: #2966c1;
+$darkRed: rgb(133, 0, 0);
+$imageBorderRadius: 50px;
+///properties
+
+$radius: 0.5rem;
+
+//skeleton loaders color
+
+$skeletonBg: rgba(139, 139, 139, 0.255);
+$skeletonCompBg: rgba(139, 139, 139, 0.712);
+
+//SCREEN SIZES
+$tablet: 768px;
+$tablet-mini: 766px;
+$ipad-pro: 1024px;
+$laptop-mini: 1440px;
+$laptop: 1280px;
+
+//fonts
+$calibri: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+$franklin: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+$light: "light";
+$fira: "Fira Sans";
+
+//updated FONTS
+
+$roboto: "Roboto", sans-serif;
+$josefinSans: "Josefin Sans", sans-serif;
+$ubuntu: Ubuntu ", sans-serif";
+$openSans: "Open Sans", sans-serif;
+
+//mixins
+
+@mixin globalFontStyle {
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f4f4f4;
+  font-family: $openSans;
+}
+
+code {
+  font-family: $ubuntu;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  text-transform: capitalize;
+  box-sizing: border-box;
+  font-size: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  scrollbar-color: transparent;
+  scrollbar-width: thin !important;
+
+  
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

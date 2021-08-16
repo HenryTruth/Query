@@ -73,7 +73,7 @@ export const auth = (username, email, password, isSignup) => {
         
         axios.post(url, authData)
             .then(response => {
-                console.log('response');
+                console.log(response);
                 const expirationDate = new Date(new Date().getTime() + response.data.expires * 1000);
                 localStorage.setItem('token',  `JWT ${response.data.token}`);
                 localStorage.setItem('expirationDate', expirationDate);
@@ -82,7 +82,7 @@ export const auth = (username, email, password, isSignup) => {
                 // dispatch(checkAuthTimeout(response.data.expires));
             })
             .catch(err => {
-                console.log('error', err.response)
+                console.log(err)
                 dispatch(authFail(err.data));
             });
     };

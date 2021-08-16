@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useRef, useCallback } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./HOME_PAGE.scss";
 import QuestionBox from "../../QuestionBox/QuestionBox";
 import CurrentPageIdentifier from "../../CurrentPageIdentifier/CurrentPageIdentifier";
@@ -113,12 +113,13 @@ export default function HOME_PAGE() {
   
 
   return (
-    <div
-      onScroll={handleScroll}
-      className="homePage"
-      style={{ background: `${stateToProps.themeColors.background}` }}
-    >
-      <CreateQuestionButton page={pageNumber}>Ask A Question</CreateQuestionButton>
+    // <div
+    //   onScroll={handleScroll}
+    //   className="homePage"
+    //   style={{ background: `${stateToProps.themeColors.background}` }}
+    // >
+    <div  className="homePage">
+<CreateQuestionButton page={pageNumber}>Ask A Question</CreateQuestionButton>
 
       <CurrentPageIdentifier to="/">
         <i
@@ -193,5 +194,7 @@ export default function HOME_PAGE() {
             )}
       </div>
     </div>
+      
+    /* </div> */
   );
 }

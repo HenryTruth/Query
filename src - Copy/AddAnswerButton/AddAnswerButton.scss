@@ -1,0 +1,121 @@
+@import "../index";
+
+.AddAnswerButtonStyles {
+  background-image: linear-gradient(#639fe4, #0d74eb);
+  color: white;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: fixed;
+  top: 80%;
+  right: 0;
+  margin: 1rem;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 50px;
+  z-index: 1000;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  box-shadow: $box-shadow;
+
+  @media (min-width: $tablet) {
+  }
+  @media (min-width: $laptop) {
+    display: block;
+  }
+}
+
+#ModalIsOpenId {
+  // background: rgba(187, 0, 0, 0.856);
+  display: grid;
+  place-items: center;
+
+  & .content {
+    border-radius: $radius;
+    height: fit-content;
+    width: 100%;
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    @media (min-width: $laptop) {
+      width: 80%;
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      background: $officialWhite;
+      grid-template-rows: 1fr;
+    }
+
+    & .AnswerProper {
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: $radius;
+      padding: 1rem 0;
+      background: transparent;
+      position: relative;
+      height: fit-content;
+      @media (min-width: $laptop) {
+        padding: 0;
+        grid-row: 1 / span 1;
+        height: 100%;
+      }
+      & form {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        place-items: center;
+        text-transform: capitalize !important;
+
+        & textarea {
+          align-self: start;
+          border-radius: 0;
+          outline: 0;
+          width: 90%;
+          height: fit-content;
+          margin: 4rem auto;
+          padding: 1rem;
+          color: black;
+          font-size: 1rem;
+
+          &::placeholder {
+            color: black;
+          }
+        }
+      }
+
+      h3 {
+        margin: 1rem 2rem;
+      }
+      & .fa-times {
+        position: absolute;
+        left: 2%;
+        top: 0;
+        font-size: 3rem;
+        font-weight: 200;
+        color: red;
+      }
+      & .sendThis {
+        position: absolute;
+        right: 3%;
+        top: 0;
+
+        &:hover img {
+          rotate: 40deg;
+        }
+      }
+    }
+    & .viewQuestion {
+      display: block;
+      grid-row: 1/-1;
+      @media (min-width: $laptop) {
+        display: block;
+        background: transparent;
+        height: 100%;
+      }
+    }
+  }
+}
+#ModalIsCloseId {
+  background: brown;
+  display: none;
+}

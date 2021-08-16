@@ -136,7 +136,7 @@ export default function GET_QUESTION_PAGE() {
             >
               <DetailsButtons>
                 <Like
-                 likeProps={result.likeNum}
+                 likeProps={result.like}
                  likeIt={() => likeHandler(result.id, 'answer')}
                  />
                 <CommentButton
