@@ -1,4 +1,5 @@
-import React, {useCallback, useEffect} from "react";
+import React from "react";
+// import {useCallback, useEffect} from "react";
 import "./SideBar.scss";
 import { Link } from "react-router-dom";
 import user4 from "../assets/user4.jpg";
@@ -23,7 +24,7 @@ export default function SideBar() {
   let image = user4
 
   if(userState.length >= 1){
-    console.log(userState[0].image, 'does it exist')
+    // console.log(userState[0].image, 'does it exist')
     image = `https://res.cloudinary.com/dyojwpsfb/${userState[0].image}`
   }
 
@@ -47,7 +48,7 @@ export default function SideBar() {
 
 
   const modeChangerHandler = () => {
-    if(stateToProps.modeColor == 'White'){
+    if(stateToProps.modeColor === 'White'){
       dispatch(actions.changemodes('Dark', 'White Mode', darkModescolors))
     }else{
       dispatch(actions.changemodes('White', 'Dark Mode', whiteModescolors))

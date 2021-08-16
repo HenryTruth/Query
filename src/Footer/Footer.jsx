@@ -1,13 +1,13 @@
 import React from "react";
 import "./Footer.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 // import { changemodes } from "../actions/index";
-import { BrowserRouter as Router, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function Footer({ children }) {
   const stateToProps = useSelector(state => 
     state.modesReducer)
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   let location = useLocation();
   return (

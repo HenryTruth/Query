@@ -22,10 +22,7 @@ import profileReducer from './store/reducers/profile'
 
 axios.defaults.headers.common['Authorization'] =  localStorage.getItem('token');
 
-
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
 
 const rootReducer = combineReducers({
   modesReducer:modesReducer,

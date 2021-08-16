@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+// import { Link, Redirect } from "react-router-dom";
 import "./CreateQuestionButton.scss";
 import Modal from "../Modal/Modal";
-import SquareButton from "../SquareButton/SquareButton";
-import * as handlers from "./../ModalState";
+// import SquareButton from "../SquareButton/SquareButton";
+// import * as handlers from "./../ModalState";
 import { useSelector, useDispatch } from "react-redux";
-import { set } from "react-hook-form";
+// import { set } from "react-hook-form";
 import * as actions from "../store/actions/index";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 // import * as MODES from "../actions";
 
 export default function CreateQuestionButton({ children, page }) {
   const stateToProps = useSelector((state) => state.modesReducer);
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   const [questionInput, setQuestionInput] = useState("");
 
@@ -94,6 +94,7 @@ export default function CreateQuestionButton({ children, page }) {
               ></textarea>
               <button className="sendThis" onSubmit={sendQuestion}>
                 <img
+                  alt='img'
                   src="https://img.icons8.com/color/50/000000/filled-sent.png"
                   className="sendThis"
                   onClick={sendQuestion}

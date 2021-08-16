@@ -87,7 +87,7 @@ export const requestProfileDetail = (username) => {
 
 
 export const uploadProfile = (profileId,profileData,profileImage,profileImgName) => {
-    console.log(profileImage,profileImgName, 'dat')
+    // console.log(profileImage,profileImgName, 'dat')
     // let image = profileImage
     // let imageName = profileImgName
 

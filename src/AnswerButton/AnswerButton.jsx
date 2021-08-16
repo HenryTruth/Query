@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./AnswerButton.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
+// import { useDispatch } from "react-redux";
 // import { changemodes } from "../actions";
 
 export default function AnswerButton({ children,answerProps,answers }) {
   const stateToProps = useSelector(state => 
     state.modesReducer)
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <div

@@ -15,15 +15,15 @@ export default function QuestionBox({
   onClickFunc,
   linkToWhere
 }) {
-  const stateToProps = useSelector(state => 
-    state.modesReducer)
+  const stateToProps = useSelector(state => state.modesReducer)
 
-  
-
- 
+  let ltw  = linkToWhere;
+  if(linkToWhere === undefined){
+    ltw = '/'
+  }
   let location = useLocation();
 
-  console.log(location.pathname, "from");
+  // console.log(location.pathname, "from");
   return (
     <div
       className="QuestionBoxStyle"
@@ -63,7 +63,7 @@ export default function QuestionBox({
         </div>
 
         <Link
-          to={linkToWhere}
+          to={ltw}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           {" "}

@@ -1,7 +1,7 @@
 import React from "react";
 import "./AnswerBox.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { BrowserRouter as Router, useLocation } from "react-router-dom";
+import { useSelector} from "react-redux";
+import { useLocation } from "react-router-dom";
 
 export default function AnswerBox({
   children,
@@ -18,7 +18,7 @@ export default function AnswerBox({
 
 
 
-  console.log(location.pathname, "from");
+  // console.log(location.pathname, "from");
 
   return (
     <div

@@ -1,7 +1,7 @@
 import React from "react";
 import "./AnswerSkeletonLoader.scss";
 
-import { BrowserRouter as Router, useLocation } from "react-router-dom";
+// import { BrowserRouter as Router, useLocation } from "react-router-dom";
 
 export default function AnswerSkeletonLoader({
   children,

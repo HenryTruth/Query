@@ -1,22 +1,23 @@
-import React, { useState, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState} from "react";
+import { useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { BrowserRouter as Router, useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import validate from "./LoginFormValidationRules";
 
 import "./Form.scss";
 import Button from "../Button/Button";
-import { Link } from "react-router-dom";
-import axios from "axios";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
 
 export default function Form({ children }) {
-  let location = useLocation();
+  // let location = useLocation();
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   const [isSignup, setiSignup] = useState(true);
 
   // const [authenticated, setAuthenticated] = useState()
@@ -42,7 +43,7 @@ export default function Form({ children }) {
 
   const showLogin = () => {
     //copy the original state
-    const copiedLoginState = isLoginClicked.clicked;
+    // const copiedLoginState = isLoginClicked.clicked;
 
     //set it to what the initial state is not
     setIsLoginClicked({
@@ -54,7 +55,7 @@ export default function Form({ children }) {
 
   const showSignup = () => {
     //copy the original state
-    const copiedLoginState = isLoginClicked.clicked;
+    // const copiedLoginState = isLoginClicked.clicked;
 
     //set it to what the initial state is not
     setIsLoginClicked({
@@ -64,11 +65,11 @@ export default function Form({ children }) {
     setiSignup(true);
   };
 
-  const stateToProps = useSelector((state) => state.modesReducer);
+  // const stateToProps = useSelector((state) => state.modesReducer);
 
   const authToProps = useSelector((state) => state.authReducer);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // const dispatchToProps = useCallback(dispatch => {
   //   return {
@@ -159,7 +160,7 @@ export default function Form({ children }) {
 <div className="form-group">
    <input
             autoComplete="off"
-            autoFill="off"
+            autofill="off"
             type="password"
             name="password"
             placeholder="Password"

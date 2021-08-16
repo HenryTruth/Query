@@ -10,10 +10,10 @@ import CommentButton from "../../CommentButton/CommentButton";
 
 import Date from "../../Date/Date";
 import AnswerButton from "../../AnswerButton/AnswerButton";
-import user4 from "../../assets/user4.jpg";
-import user5 from "../../assets/user5.jpg";
-import user7 from "../../assets/user7.jpg";
-import user2 from "../../assets/user2.jpg";
+// import user4 from "../../assets/user4.jpg";
+// import user5 from "../../assets/user5.jpg";
+// import user7 from "../../assets/user7.jpg";
+// import user2 from "../../assets/user2.jpg";
 import { useSelector, useDispatch } from "react-redux";
 // import { changestateToProps } from "../../actions/index";
 import AddAnswerButton from "../../AddAnswerButton/AddAnswerButton";
@@ -21,7 +21,7 @@ import QuestionSkeletonLoader from "../../SKELETONS/QuestionSkeletonLoader/Quest
 
 import CommentToBeToggled from '../../commentToBeToggled/commentToBeToggled';
 import PostCommentButton from '../../PostCommentButton/PostCommentButton'
-import AnswerSkeletonLoader from "../../SKELETONS/AnswerSkeletonLoader/AnswerSkeletonLoader";
+// import AnswerSkeletonLoader from "../../SKELETONS/AnswerSkeletonLoader/AnswerSkeletonLoader";
 import * as actions from '../../store/actions/index';
 import axios from "axios";
 

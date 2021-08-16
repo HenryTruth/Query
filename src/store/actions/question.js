@@ -14,7 +14,7 @@ export const getQuestionDetails = (questionData) => {
 
 export const requestQuestionDetails = (pageNumber) => {
     const questionArr = []
-    let questionData;
+    let questionData
     let d = 0
     return dispatch => {
         console.log(questionData, 'your questiondata')

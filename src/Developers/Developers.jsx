@@ -1,6 +1,6 @@
 import React from "react";
 import "./Developers.scss";
-import images from "../assets/LogoDesktop.png";
+// import images from "../assets/LogoDesktop.png";
 
 export default function Developers({
   children,
