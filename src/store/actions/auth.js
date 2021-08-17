@@ -103,31 +103,19 @@ export const auth = (username, email, password, isSignup) => {
         
         axios.post(url, authData)
             .then(response => {
-<<<<<<< HEAD
                 console.log(response);
                 const expirationDate = new Date(new Date().getTime() + response.data.expires * 1000);
-=======
-                console.log('response', response);
-                // token expires in 5
-                const refreshLimit = new Date(new Date().getTime() + 604800 * 1000);
-                const expirationDate = new Date(new Date().getTime() + 300 * 1000);
->>>>>>> 2e1807d320614e862e897702abbdd896c78f9766
                 localStorage.setItem('token',  `JWT ${response.data.token}`);
                 localStorage.setItem('tokenRefresh', response.data.token)
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('username', response.data.username);
-                localStorage.setItem('refreshTokenLimit', refreshLimit)
+                // localStorage.setItem('refreshTokenLimit', refreshLimit)
                 dispatch(authSuccess(response.data.token, response.data.username));
                 dispatch(checkAuthTimeout(300));
             })
             .catch(err => {
-<<<<<<< HEAD
                 console.log(err)
                 dispatch(authFail(err.data));
-=======
-                console.log('error', err.response)
-                dispatch(authFail(err.response.data.detail));
->>>>>>> 2e1807d320614e862e897702abbdd896c78f9766
             });
     };
 };

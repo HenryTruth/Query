@@ -29,19 +29,7 @@ function App() {
   let location = useLocation();
   var formdata = new FormData();
 
-<<<<<<< HEAD
   let authenticated = localStorage.getItem("token") !== null;
-=======
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch((actions.authCheckState()))
-    dispatch((actions.checkRefreshTimeout()))
-  },[])
-
-  let authenticated   = localStorage.getItem('token') !== null
-
->>>>>>> 2e1807d320614e862e897702abbdd896c78f9766
 
   let routes = (
     <Switch>
