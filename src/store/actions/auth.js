@@ -30,19 +30,49 @@ export const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('expirationDate');
     localStorage.removeItem('username');
+    localStorage.removeItem('refreshTokenLimit')
     return {
         type: actionTypes.AUTH_LOGOUT
     };
 };
 
 
-// export const checkAuthTimeout = (expirationTime) => {
-//     return dispatch => {
-//         setTimeout(() => {
-//             dispatch(logout());
-//         }, expirationTime * 1000);
-//     };
-// };
+export const checkAuthTimeout = (expirationTime) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(refreshToken());
+        }, expirationTime * 1000);
+    };
+};
+
+
+export const checkRefreshTimeout = (expirationTime) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(logout());
+        }, expirationTime * 1000)
+    }
+}
+
+
+export const refreshToken = (oldtoken) => {
+    let renewToken = {token:oldtoken}
+    return dispatch => {
+        axios.post('https://querybackendapi.herokuapp.com/api/account/refresh/',renewToken)
+        .then(response => {
+            const expirationDate = new Date(new Date().getTime() + 300 * 1000);
+            localStorage.setItem('token',  `JWT ${response.data.token}`);
+            localStorage.setItem('expirationDate', expirationDate);
+            localStorage.setItem('username', response.data.username);
+            dispatch(authSuccess(response.data.token, response.data.username));
+            dispatch(checkAuthTimeout(300));
+        })
+        .catch(err => {
+            console.log('error', err.response)
+            dispatch(authFail(err.response.data.detail));
+        })
+    }
+}
 
 
 export const auth = (username, email, password, isSignup) => {
@@ -73,17 +103,21 @@ export const auth = (username, email, password, isSignup) => {
         
         axios.post(url, authData)
             .then(response => {
-                console.log('response');
-                const expirationDate = new Date(new Date().getTime() + response.data.expires * 1000);
+                console.log('response', response);
+                // token expires in 5
+                const refreshLimit = new Date(new Date().getTime() + 604800 * 1000);
+                const expirationDate = new Date(new Date().getTime() + 300 * 1000);
                 localStorage.setItem('token',  `JWT ${response.data.token}`);
+                localStorage.setItem('tokenRefresh', response.data.token)
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('username', response.data.username);
+                localStorage.setItem('refreshTokenLimit', refreshLimit)
                 dispatch(authSuccess(response.data.token, response.data.username));
-                // dispatch(checkAuthTimeout(response.data.expires));
+                dispatch(checkAuthTimeout(300));
             })
             .catch(err => {
                 console.log('error', err.response)
-                dispatch(authFail(err.data));
+                dispatch(authFail(err.response.data.detail));
             });
     };
 };
@@ -98,21 +132,39 @@ export const setAuthRedirectPath = (path) => {
 
 
 
-// export const authCheckState = () => {
-//     return dispatch => {
-//         const token = localStorage.getItem('token');
-//         if (!token) {
-//             dispatch(logout());
-//         } else {
-//             const expirationDate = new Date(localStorage.getItem('expirationDate'));
-//             if (expirationDate <= new Date()) {
-//                 dispatch(logout());
-//             } else {
-//                 const username = localStorage.getItem('username');
-//                 dispatch(authSuccess(token, username));
-//                 dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000 ));
-//             }   
-//         }
-//     };
-// };
+export const authCheckState = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            dispatch(logout());
+        } else {
+            const expirationDate = Date.parse(`${localStorage.getItem('expirationDate')}`);
+            if (expirationDate <= new Date()) {
+                dispatch(logout());
+            } else {
+                const username = localStorage.getItem('username');
+                dispatch(authSuccess(token, username));
+                dispatch(checkAuthTimeout((expirationDate - new Date().getTime()) / 1000 ));
+            }   
+        }
+    };
+};
+
+export const refreshTokenLimit = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            dispatch(logout());
+        } else {
+            const expirationDate = Date.parse(`${localStorage.getItem('refreshTokenLimit')}`);
+            if (expirationDate <= new Date()) {
+                dispatch(logout());
+            } else {
+                const username = localStorage.getItem('username');
+                dispatch(authSuccess(token, username));
+                dispatch(checkRefreshTimeout((expirationDate - new Date().getTime()) / 1000 ));
+            }   
+        }
+    }
+}
 

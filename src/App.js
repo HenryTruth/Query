@@ -12,6 +12,7 @@ import SELECTED_POST from "./PAGES/SELECTED_POST/SELECTED_POST";
 import FixedRoundButton from "./FixedRoundButton/FixedRoundButton";
 import HomeButton from "./HomeButton/HomeButton";
 import GET_QUESTION_PAGE from "./PAGES/GET_QUESTION_PAGE/GET_QUESTION_PAGE";
+import * as actions from './store/actions/index';
 import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter as Router, useLocation, Redirect } from "react-router-dom";
 
@@ -19,6 +20,13 @@ import { BrowserRouter as Router, useLocation, Redirect } from "react-router-dom
 function App() {
   let location = useLocation();
   var formdata = new FormData();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch((actions.authCheckState()))
+    dispatch((actions.checkRefreshTimeout()))
+  },[])
 
   let authenticated   = localStorage.getItem('token') !== null
 
