@@ -2,22 +2,24 @@ import React, { useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { BrowserRouter as Router, useLocation } from "react-router-dom";
+import { Link, BrowserRouter as Router, useLocation } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import validate from "./LoginFormValidationRules";
 
 import "./Form.scss";
 import Button from "../Button/Button";
-import { Link } from "react-router-dom";
-import axios from "axios";
 
 export default function Form({ children }) {
   let location = useLocation();
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [isSignup, setiSignup] = useState(true);
+
+  const [loginColor, setLoginColor] = useState(null);
+  const [signUpColor, setSignUpColor] = useState(null);
+  const [signUpState, setSignUpState] = useState("Sign up");
+  const [loginState, setLoginState] = useState("Login");
+  const [hideIcon, setHideIcon] = useState(false);
+  const [disabledState, setDisabledState] = useState(false);
 
   // const [authenticated, setAuthenticated] = useState()
 
@@ -41,6 +43,9 @@ export default function Form({ children }) {
   //a function that toggles the login clicked or not.
 
   const showLogin = () => {
+    setLoginColor("#507cc6");
+    setSignUpColor(null);
+
     //copy the original state
     const copiedLoginState = isLoginClicked.clicked;
 
@@ -53,6 +58,8 @@ export default function Form({ children }) {
   };
 
   const showSignup = () => {
+    setLoginColor(null);
+    setSignUpColor("#507cc6");
     //copy the original state
     const copiedLoginState = isLoginClicked.clicked;
 
@@ -62,6 +69,13 @@ export default function Form({ children }) {
     });
 
     setiSignup(true);
+  };
+
+  const showLoadingMessage = () => {
+    setSignUpState("Loading....");
+    setLoginState("Logging you in....");
+    setHideIcon(true);
+    setDisabledState(true);
   };
 
   const stateToProps = useSelector((state) => state.modesReducer);
@@ -98,12 +112,17 @@ export default function Form({ children }) {
       <div className="FormStyle">
         <ul className="nav nav-tabs">
           <li className="active">
-            <a onClick={showLogin} href="#">
+            <a onClick={showLogin} style={{ color: loginColor }} href="#">
               lOGIN
             </a>
           </li>
           <li>
-            <a onClick={showSignup} href="#" className="signUpHeader">
+            <a
+              onClick={showSignup}
+              style={{ color: signUpColor }}
+              href="#"
+              className="signUpHeader"
+            >
               SIGN UP
             </a>
           </li>
@@ -116,6 +135,8 @@ export default function Form({ children }) {
           noValidate
         >
           <h1> {isLoginClicked.clicked ? "login" : "Sign up"}</h1>
+          <p className="invalidMessage"> truth put the error message here!</p>
+
           <div className="form-group">
             <input
               autoComplete="off"
@@ -156,27 +177,44 @@ export default function Form({ children }) {
             </React.Fragment>
           ) : null}
 
-<div className="form-group">
-   <input
-            autoComplete="off"
-            autoFill="off"
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-            value={values.password || ""}
-            required
-          />
-          {errors.password && (
-            <p style={{ color: "red", display: "block" }}>{errors.password}</p>
-          )}
-</div>
-         
+          <div className="form-group">
+            <input
+              autoComplete="off"
+              autoFill="off"
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+              value={values.password || ""}
+              required
+            />
+            {errors.password && (
+              <p style={{ color: "red", display: "block" }}>
+                {errors.password}
+              </p>
+            )}
+          </div>
 
-          <Button type="submit">
-            <span>{isLoginClicked.clicked ? "login" : "Sign up"}</span>
-            <i className="fas fa-arrow-circle-right"></i>
+          <Button
+            type="submit"
+            handler={showLoadingMessage}
+            disabled={disabledState}
+          >
+            {/* <span>{isLoginClicked.clicked ? "login" : "Sign up"}</span> */}
+            <span>{`${
+              isLoginClicked.clicked ? `${loginState}` : `${signUpState}`
+            }`}</span>
+            {!hideIcon && <i className="fas fa-arrow-circle-right"></i>}
           </Button>
+
+          <br />
+          <Link
+            to="/forgotpassword"
+            className="forgot-password"
+            style={{ fontSize: "10px", fontSize: ".7rem" }}
+          >
+            Forgot Password?
+          </Link>
         </form>
       </div>
     </React.Fragment>

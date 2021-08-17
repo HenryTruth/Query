@@ -1,0 +1,23 @@
+@import "../../index";
+
+.homePage {
+  grid-column: 1/-1;
+  height: 100vh;
+  overflow-y: scroll;
+
+  @media (min-width: $laptop) {
+    grid-column: 2 / span 1;
+    background: transparent;
+    display: grid;
+    grid-template-rows: 1fr;
+    position: relative;
+  }
+
+  .questionHolder {
+    @media (min-width: $laptop) {
+      width: 80%;
+      margin: 0 auto;
+    
+    }
+  }
+}

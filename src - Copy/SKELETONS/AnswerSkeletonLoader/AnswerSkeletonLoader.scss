@@ -1,0 +1,110 @@
+@import "../../index";
+
+@mixin globalFontStyle {
+}
+
+.AnswerSkeletonLoaderStyle {
+  background: $skeletonBg;
+  color: $initialsColor;
+  // padding: 1rem;
+  height: fit-content;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+
+  .AnswerInitials {
+    background: transparent;
+    display: grid;
+    grid-template-columns: 0.1fr 0.9fr;
+    grid-column-gap: 0.4rem;
+    margin: 0.3rem auto;
+    padding: 0.4rem;
+
+    & .userImage {
+      height: 30px;
+      width: 30px;
+      justify-self: start;
+      border-radius: 50px;
+      margin: auto;
+      background: $skeletonCompBg;
+
+      @media (min-width: $tablet) {
+        height: 40px;
+        width: 40px;
+      }
+
+      & img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        border-radius: 50%;
+      }
+    }
+
+    & .initials {
+      background: transparent;
+      grid-column: 2/-1;
+      display: grid;
+      justify-self: start;
+      justify-items: start;
+      color: $initialsColor;
+      h3,
+      p {
+        color: inherit;
+        margin: 0;
+        padding: 0;
+        background: $skeletonCompBg;
+        margin-bottom: 0.4rem;
+        padding: 1rem 6rem;
+        border-radius: 0.5rem;
+      }
+      h3 {
+        color: inherit;
+        font-weight: 500;
+        font-family: $josefinSans;
+        font-size: 0.8rem;
+        align-self: end;
+        padding: 1rem 8rem;
+        border-radius: 0.5rem;
+
+        @media (min-width: $tablet) {
+          font-size: 1.2rem;
+        }
+      }
+      & p {
+        color: inherit;
+        font-weight: 600;
+        font-family: $roboto;
+        font-size: 0.6rem;
+        @media (min-width: $tablet) {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  .UserAnswer {
+    padding: 1rem 8rem;
+    height: fit-content;
+    padding: 0.1rem;
+    text-align: justify;
+    margin: 0.3rem auto;
+    border-radius: 0.5rem;
+    background: $skeletonCompBg;
+    width: 95%;
+
+    .Answer {
+      color: inherit;
+      font-size: 0.7rem;
+      font-weight: 400;
+      padding: 0 1rem;
+      font-family: $openSans;
+      background: $skeletonCompBg;
+      padding: 1rem 8rem;
+
+      @media (min-width: $tablet) {
+        font-size: 1rem;
+      }
+    }
+  }
+}

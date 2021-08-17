@@ -1,0 +1,112 @@
+@import "../index";
+
+.CreatePostBoxStyle {
+  background: white;
+  padding: 1rem;
+  // overflow: scroll;
+  height: fit-content;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+
+  @media (min-width: $laptop) {
+    width: 60%;
+    height: fit-content;
+    margin-top: 2rem;
+  }
+
+  .CreatePostInitials {
+    background: white;
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr;
+    margin: 0.3rem auto;
+
+    & .CreatePostImage {
+      height: 40px;
+      width: 40px;
+      background-image: url(../assets/panda.JPG);
+      background-position: center;
+      background-size: cover;
+      border-radius: 50px;
+      margin: auto;
+
+      @media (min-width: $tablet) {
+        height: 100px;
+        width: 100px;
+      }
+    }
+
+    & .initials {
+      background: transparent;
+      grid-column: 2/-1;
+      display: grid;
+      place-items: start;
+      h3,
+      p {
+        color: rgba(0, 0, 0, 0.753);
+        margin: 0;
+        padding: 0;
+      }
+
+      h3 {
+        color: rgba(0, 0, 0, 0.959);
+        font-weight: 500;
+        font-size: 0.8rem;
+        align-self: end;
+
+        @media (min-width: $tablet) {
+          font-size: 1.3rem;
+        }
+      }
+
+      p {
+        color: rgba(0, 0, 0, 0.959);
+        font-weight: 500;
+        font-size: 0.6rem;
+
+        @media (min-width: $tablet) {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .createquestion {
+    color: rgba(245, 245, 245, 0.87);
+    font-size: 0.7rem;
+    background: white;
+    border: 0.1rem solid #cccccc;
+    height: fit-content;
+    padding: 1rem;
+    text-align: justify;
+    margin: 0.3rem auto;
+    border-radius: 0.5rem;
+  }
+
+  textarea {
+    margin: 1rem auto;
+    padding: 1rem;
+    background: transparent;
+    width: 90%;
+    border-radius: 0.5rem;
+    border: 0.1rem solid #cccccc;
+    outline: none;
+  }
+
+  button {
+    // background: #00be19;
+    grid-column: 5/-1;
+    // display: grid;
+    place-items: end;
+    // color: white;
+    // border: none;
+    padding: 1rem 3rem;
+    scale: 0.5;
+    // border-radius: 1rem;
+  }
+
+  & .UserButtonsArea * {
+    color: white;
+    font-size: 1.2rem;
+  }
+}

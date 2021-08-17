@@ -1,0 +1,117 @@
+@import "../index";
+
+.QuestionBoxStyle {
+  z-index: 3;
+  background: $officialWhite;
+
+  color: $initialsColor;
+  height: fit-content;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin: 0.5rem auto;
+  cursor: pointer;
+  position: relative;
+
+  @media (min-width: $tablet) {
+    width: 70%;
+  }
+  @media (min-width: $laptop) {
+    width: 95%;
+  }
+
+  .UserInitials {
+    background: transparent;
+    display: grid;
+    grid-template-columns: 0.1fr 0.8fr;
+  }
+  .UserInitials .userImage {
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    margin-right: 0.5rem;
+    // background-image: url(../assets/picture.JPG);
+    // background-position: center;
+    // background-size: cover;
+
+    @media (min-width: $tablet) {
+      height: 60px;
+      width: 60px;
+    }
+    @media (min-width: $laptop) {
+      justify-self: end;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .UserInitials .userImage img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .UserInitials .initials {
+    background: transparent;
+    color: $initialsColor;
+    grid-column: 2/-1;
+    display: grid;
+    place-items: start;
+  }
+
+  .UserInitials .initials h3,
+  p {
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+    font-size: 0.7rem;
+
+    @media (min-width: $tablet) {
+      font-size: 1rem;
+    }
+  }
+  .UserInitials .initials {
+    h3 {
+      color: inherit;
+      font-weight: 500;
+      font-size: 0.9rem;
+      font-family: $josefinSans;
+      align-self: end;
+      @media (min-width: $tablet) {
+        font-size: 1.3rem;
+      }
+    }
+    p {
+      font-family: $roboto;
+      font-weight: 600;
+    }
+  }
+  .question {
+    color: inherit;
+    font-size: 0.7rem;
+    font-family: $openSans;
+    font-weight: 600;
+
+    @media (min-width: $tablet) {
+      font-size: 1rem;
+    }
+  }
+  .UserQuestion {
+    background: white;
+    height: fit-content;
+    padding: 0.5rem;
+    text-align: justify;
+    margin: 0.3rem auto;
+    border-radius: 0.5rem;
+    border: 1px solid #D2D3E7;
+  }
+
+  & .questionBorder {
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+}

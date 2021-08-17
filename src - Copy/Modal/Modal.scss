@@ -1,0 +1,17 @@
+@import "../index";
+
+.Modal {
+  position: fixed;
+  height: 100%;
+  z-index: 2000000;
+  box-shadow: $box-shadow;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  
+}
