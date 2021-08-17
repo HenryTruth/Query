@@ -2,7 +2,8 @@ export {
     auth,
     logout,
     setAuthRedirectPath,
-    // authCheckState
+    authCheckState,
+    checkRefreshTimeout
 } from './auth';
 
 export {

@@ -8,6 +8,10 @@ const questionState = {
 }
 
 const getQuestion = (state, action) => {
+<<<<<<< HEAD
+=======
+    // state.recentlyAskedQuestions.push(...action.questionData)
+>>>>>>> 2e1807d320614e862e897702abbdd896c78f9766
     return updateObject(state,{
         recentlyAskedQuestions:action.questionData
     })

@@ -96,10 +96,14 @@ export const uploadProfile = (profileId,profileData,profileImage,profileImgName)
     // let post = {
     //     profileData:profileData,
     //     image:profileImage
+<<<<<<< HEAD
     // }
     for (var pair of fd.entries()) {
         console.log(pair[0]+ ', ' + pair[1]); 
     }
+=======
+    
+>>>>>>> 2e1807d320614e862e897702abbdd896c78f9766
     return dispatch => {
         axios.put(` https://querybackendapi.herokuapp.com/api/profiles/${profileId}/`, fd)
         .then(response => {

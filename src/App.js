@@ -12,6 +12,7 @@ import SELECTED_POST from "./PAGES/SELECTED_POST/SELECTED_POST";
 import FixedRoundButton from "./FixedRoundButton/FixedRoundButton";
 import HomeButton from "./HomeButton/HomeButton";
 import GET_QUESTION_PAGE from "./PAGES/GET_QUESTION_PAGE/GET_QUESTION_PAGE";
+import * as actions from './store/actions/index';
 import { useSelector, useDispatch } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -28,7 +29,19 @@ function App() {
   let location = useLocation();
   var formdata = new FormData();
 
+<<<<<<< HEAD
   let authenticated = localStorage.getItem("token") !== null;
+=======
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch((actions.authCheckState()))
+    dispatch((actions.checkRefreshTimeout()))
+  },[])
+
+  let authenticated   = localStorage.getItem('token') !== null
+
+>>>>>>> 2e1807d320614e862e897702abbdd896c78f9766
 
   let routes = (
     <Switch>
