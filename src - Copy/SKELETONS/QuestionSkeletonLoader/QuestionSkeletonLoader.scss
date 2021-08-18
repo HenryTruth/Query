@@ -1,0 +1,128 @@
+@import "../../index";
+
+.QuestionSkeletonLoader {
+  z-index: 3;
+  color: $initialsColor;
+  height: fit-content;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin: 0.5rem auto;
+  cursor: pointer;
+  position: relative;
+  padding: 1rem 0;
+  // animation: name duration timing-function delay iteration-count direction fill-mode;
+  transition: all 100ms ease;
+
+  @media (min-width: $tablet) {
+    width: 70%;
+  }
+  @media (min-width: $laptop) {
+    width: 95%;
+  }
+
+  .QuestionSkeletonLoaderUserInitials {
+    background: transparent;
+    display: grid;
+    grid-template-columns: 0.1fr 0.8fr;
+    & .QuestionSkeletonLoaderuserImage {
+      @include beautiful-motion;
+      height: 20px;
+      width: 20px;
+      border-radius: 50px;
+      margin-right: 0.5rem;
+      margin-left: 1rem;
+      background: $skeletonCompBg;
+
+      @media (min-width: $tablet) {
+        height: 60px;
+        width: 60px;
+      }
+      @media (min-width: $laptop) {
+        justify-self: end;
+      }
+    }
+    .QuestionSkeletonLoaderinitials {
+      background: transparent;
+      color: $initialsColor;
+      grid-column: 2/-1;
+      display: grid;
+      place-items: start;
+    }
+    .QuestionSkeletonLoaderinitials h3,
+    p {
+      color: inherit;
+      margin: 0;
+      padding: 0;
+      text-align: justify;
+      font-size: 0.7rem;
+      // animation: Wave 1s ease infinite alternate;
+
+      @media (min-width: $tablet) {
+        font-size: 1rem;
+      }
+    }
+    .QuestionSkeletonLoaderinitials {
+      h3 {
+        border-radius: 0.4rem;
+        color: inherit;
+        font-weight: 500;
+        font-size: 0.9rem;
+        font-family: $josefinSans;
+        align-self: end;
+        background: $skeletonCompBg;
+        padding: 0.3rem 6rem;
+        // animation: Wave 1s ease infinite alternate;
+        @media (min-width: $tablet) {
+          font-size: 1.3rem;
+        }
+      }
+      p {
+        border-radius: 0.4rem;
+        margin-top: 0.5rem;
+        font-family: $roboto;
+        font-weight: 600;
+        background: $skeletonCompBg;
+        padding: 0.3rem 8rem;
+      }
+    }
+  }
+
+  .QuestionSkeletonLoaderUserQuestion {
+    height: fit-content;
+    // padding: 0.5rem;
+    text-align: justify;
+    margin: 0.5rem auto;
+    border-radius: 0.5rem;
+    background: $skeletonCompBg;
+    width: 95%;
+    position: relative;
+
+    .QuestionSkeletonLoaderquestion {
+      color: inherit;
+      font-size: 0.7rem;
+      font-family: $openSans;
+      font-weight: 600;
+
+      padding: 0.2rem 6rem;
+
+      @media (min-width: $tablet) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  & .QuestionSkeletonLoaderquestionBorder {
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+}
+
+.detailSkeleton {
+  background: $skeletonCompBg;
+  padding: 0.1rem 2rem;
+  border-radius: 0.4rem;
+}
+
+.odd {
+  visibility: hidden;
+}

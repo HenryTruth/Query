@@ -12,6 +12,7 @@ const getQuestion = (state, action) => {
     return updateObject(state,{
         recentlyAskedQuestions:action.questionData
     })
+
 }
 
 

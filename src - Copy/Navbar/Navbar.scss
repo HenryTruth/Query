@@ -1,0 +1,143 @@
+@import "../index";
+
+.NavbarStyle {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: $officialWhite;
+  color: #85bdff;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  z-index: 200;
+  align-items: center;
+
+  & .brandName {
+    justify-self: center;
+    padding: 0;
+    margin: 0;
+    background: transparent; //trp
+    color: inherit;
+    // font-size: 2rem;
+    height: 4rem;
+    width: 5rem;
+
+    @media (min-width: $laptop) {
+      height: 6rem;
+      width: 10rem;
+    }
+
+    & img {
+      height: 100%;
+      width: 100%;
+      @media (min-width: $laptop) {
+        font-size: 3rem;
+      }
+    }
+    @media (min-width: $laptop) {
+      font-size: 3rem;
+    }
+  }
+  & .formDiv {
+    grid-column: 2 / span 2;
+    width: 100%;
+    @media (min-width: $laptop) {
+      grid-column: 2 / span 3;
+    }
+
+    & form {
+      width: 100%;
+      & .form-group {
+        width: 100%;
+        background: white;
+        display: inline-block;
+        border: 0.1rem solid #85bdff;
+        border-radius: 0.5rem;
+        transition: 200ms all ease-in;
+        & input {
+          width: 80%;
+          height: 2rem;
+          border: none;
+          outline: none;
+          background: transparent;
+          display: inline-block;
+          margin: 0 auto;
+          padding: 0 0.2rem;
+
+          @media (min-width: $tablet) {
+            height: 3rem;
+          }
+          @media (min-width: $laptop) {
+            width: 90%;
+            grid-column: 2 / span 2;
+          }
+        }
+        & button {
+          background: transparent;
+          border: none;
+
+          i {
+            text-align: center;
+            rotate: 90deg;
+          }
+        }
+        &:hover {
+          width: 100%;
+        }
+      }
+    }
+  }
+  & .links {
+    // on a small screen do not display
+    display: none;
+
+    @media (min-width: $laptop) {
+      display: block;
+
+      & .linksUl {
+        height: fit-content;
+
+        & .linksLi {
+          display: inline-block;
+          margin: 1rem;
+
+          & a {
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            padding: 1rem 0;
+            &::before {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              width: 0;
+              height: 0.1rem;
+              background: $officialColor;
+              transition: width 0.2s ease-in;
+              transform-origin: center;
+            }
+            &:hover::before {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  & .profileImage {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50px;
+    justify-self: end;
+    display: grid;
+    justify-items: end;
+    img {
+      border-radius: 50px;
+      width: 100%;
+      height: 100%;
+    }
+    @media (min-width: $laptop) {
+      display: none;
+    }
+  }
+}

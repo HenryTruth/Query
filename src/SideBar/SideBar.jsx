@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import user4 from "../assets/user4.jpg";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from '../store/actions/index';
+import { useHistory } from "react-router-dom";
+
 
 export default function SideBar() {
   const stateToProps = useSelector(state => 
@@ -55,6 +57,18 @@ export default function SideBar() {
     }
   }
 
+  const localStorageClearer = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('expirationDate')
+    localStorage.removeItem('username')
+  }
+
+  const history = useHistory();
+  const logOutter = () => {
+    localStorageClearer();
+    history.push('/')
+  }
+
 
   return (
     <div
@@ -77,10 +91,10 @@ export default function SideBar() {
                   }}
                 >
                   <div className="profilePicture">
-                    <img src={image} alt="" />
+                    <img src={user4} alt="" />
                   </div>
                   <div className="profileName">
-                    <h5>{localStorage.getItem('username')}</h5>
+                    <h5>Gosling Mark</h5>
                   </div>
                   <div className="profileAvater"></div>
                 </div>
@@ -125,7 +139,7 @@ export default function SideBar() {
               </Link>
             </div>
           </li>
-          <Link to="/" className="routerLinks">
+          <div onClick={logOutter} >
             <li
               className="links"
               style={{ background: `${stateToProps.themeColors.background}` }}
@@ -136,7 +150,7 @@ export default function SideBar() {
                 </Link>
               </div>
             </li>
-          </Link>
+          </div>
         </ul>
       </div>
     </div>

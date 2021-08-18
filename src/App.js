@@ -16,32 +16,36 @@ import GET_QUESTION_PAGE from "./PAGES/GET_QUESTION_PAGE/GET_QUESTION_PAGE";
 import {  Redirect } from "react-router-dom";
 // import { BrowserRouter as Router, useLocation } from "react-router-dom";
 
+import ForgotPassword from "./ForgotPassword/ForgotPassword";
+
+//error page
+import ErrorPage from "./ErrorPage/ErrorPage";
 
 function App() {
   // let location = useLocation();
   // var formdata = new FormData();
 
-  let authenticated   = localStorage.getItem('token') !== null
-
+  let authenticated = localStorage.getItem("token") !== null;
 
   let routes = (
     <Switch>
       <Route path="/" exact component={SIGN_UP_PAGE} />
       <Redirect to="/" />
     </Switch>
-  )
+  );
 
-  if(authenticated){
+  if (authenticated) {
     routes = (
       <Switch>
         <Route path="/" exact component={SIGN_UP_PAGE} />
-          <Route path="/profile" exact component={PROFILE_PAGE} />
-          <Route path="/home" exact component={HOME_PAGE} />
-          <Route path="/post" exact component={SELECTED_POST} />
-          <Route path="/getpost" exact component={GET_QUESTION_PAGE} />
-          <Redirect to="/" />
+        <Route path="/profile" exact component={PROFILE_PAGE} />
+        <Route path="/home" exact component={HOME_PAGE} />
+        <Route path="/post" exact component={SELECTED_POST} />
+        <Route path="/getpost" exact component={GET_QUESTION_PAGE} />
+        <Route path="/errorpage" exact component={ErrorPage} />
+        <Redirect to="/errorpage" />
       </Switch>
-    )
+    );
   }
   //console.log(routes, 'routes')
 
@@ -63,13 +67,14 @@ function App() {
         <HomeButton />
         <Container>
           {routes}
+          {/* <ErrorPage /> */}
           {<Footer />}
         </Container>
+
+        {/* <ForgotPassword /> */}
       </Wrapper>
     </div>
   );
 }
-
-
 
 export default App;

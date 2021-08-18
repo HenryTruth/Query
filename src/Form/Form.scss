@@ -74,6 +74,11 @@
       background: transparent;
       margin: 0.5rem 0;
     }
+
+    & .invalidMessage {
+      color: #C70A1D;
+      font-size: 0.9rem;
+    }
   }
 
   .Form input {
@@ -107,4 +112,7 @@
     color: $loginColor;
     text-decoration: none;
   }
+}
+.errorMessageHandler{
+  color: red;
 }

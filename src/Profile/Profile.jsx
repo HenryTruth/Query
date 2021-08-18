@@ -90,6 +90,12 @@ export default function Profile({ children }) {
     closeModal();
   };
 
+  const submitBio = (event, bioRef) => {
+    event.preventDefault();
+    setBio(bioRef.current.value);
+
+    console.log(bio);
+  };
 
   useEffect(() => {
     dispatch(actions.requestUserDetails(localStorage.getItem('username')))
@@ -127,6 +133,7 @@ export default function Profile({ children }) {
             <h3>start editing your bio</h3>
             <form onSubmit={(e) => submitter(e)}>
               <textarea
+                ref={bioRef}
                 onChange={(event) => {
                   setBio(event.target.value);
                 }}

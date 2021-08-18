@@ -33,7 +33,6 @@ const rootReducer = combineReducers({
   profileReducer:profileReducer
 });
 
-
 const store = createStore(rootReducer, composeEnhancers(
   applyMiddleware(thunk)
 ));

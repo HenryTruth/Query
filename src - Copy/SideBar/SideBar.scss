@@ -1,0 +1,132 @@
+@import "../index";
+
+.SideBar {
+  display: none;
+  background-color: transparent;
+
+  @media (min-width: $laptop) {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+    display: grid;
+    padding: 1rem;
+    & .linksWrapper {
+      background: #efefef;
+      // place-self: center;
+      height: 90vh;
+      width: 100%;
+      border-radius: 0.5rem;
+
+      & ul {
+        margin: 2rem auto;
+        width: 90%;
+        height: fit-content;
+        list-style-type: none;
+        & li:not(.proLink) {
+          margin: 2rem auto;
+          border: 1px solid rgba(128, 128, 128, 0.459);
+          border-radius: 0.5rem;
+          background: white;
+          display: grid;
+          justify-items: start;
+          position: relative;
+          z-index: 1;
+          overflow: hidden;
+          padding: 1rem;
+          & a {
+            color: #619fe7;
+            text-decoration: none;
+            & i {
+              margin: 0 1rem;
+            }
+          }
+          &::before {
+            border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: transparent;
+            transform: scaleY(0);
+            transform-origin: center;
+            transition: transform 0.5s;
+            transition: width 0.1s 0.1s;
+          }
+          &:hover::before {
+            transform: scaleY(1);
+            background: $officialColor;
+            width: 5%;
+          }
+        }
+        .deleteAct {
+          color: red;
+        }
+      }
+
+      & .proLink {
+        margin-bottom: 4rem;
+        border-radius: 0.5rem;
+
+        padding: 0;
+        & .profilePanel {
+          background: transparent;
+          color: black;
+          width: 100%;
+          height: fit-content;
+          display: grid;
+        }
+
+        & .profileArea {
+          border-radius: 0.5rem;
+          background: white;
+          height: 4rem;
+          width: 100%;
+          place-items: center;
+          display: grid;
+          grid-template-columns: 0.2fr 0.6fr 0.2fr;
+
+          & .profilePicture {
+            height: 3rem;
+            width: 3rem;
+            border-radius: 50px;
+
+            & img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: $imageBorderRadius;
+            }
+          }
+          & .profileName {
+            justify-self: start;
+            align-self: center;
+          }
+          & .profileAvater {
+            background-image: url(../assets/profileIcon.jpg);
+            background-position: center;
+            background-size: cover;
+            height: 1rem;
+            width: 1rem;
+            border-radius: 50px;
+            place-self: center;
+          }
+        }
+      }
+    }
+  }
+
+  .brandPanel {
+    height: fit-content;
+    margin-bottom: 1rem;
+    align-self: start;
+    color: black;
+    text-align: justify;
+  }
+}
+
+.routerLinks {
+  text-decoration: none;
+ 
+}

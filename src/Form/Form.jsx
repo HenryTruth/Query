@@ -9,7 +9,7 @@ import validate from "./LoginFormValidationRules";
 
 import "./Form.scss";
 import Button from "../Button/Button";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import axios from "axios";
 
 export default function Form({ children }) {
@@ -19,6 +19,13 @@ export default function Form({ children }) {
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
   const [isSignup, setiSignup] = useState(true);
+
+  const [loginColor, setLoginColor] = useState(null);
+  const [signUpColor, setSignUpColor] = useState(null);
+  const [signUpState, setSignUpState] = useState("Sign up");
+  const [loginState, setLoginState] = useState("Login");
+  const [hideIcon, setHideIcon] = useState(false);
+  const [disabledState, setDisabledState] = useState(false);
 
   // const [authenticated, setAuthenticated] = useState()
 
@@ -42,6 +49,9 @@ export default function Form({ children }) {
   //a function that toggles the login clicked or not.
 
   const showLogin = () => {
+    setLoginColor("#507cc6");
+    setSignUpColor(null);
+
     //copy the original state
     // const copiedLoginState = isLoginClicked.clicked;
 
@@ -54,6 +64,8 @@ export default function Form({ children }) {
   };
 
   const showSignup = () => {
+    setLoginColor(null);
+    setSignUpColor("#507cc6");
     //copy the original state
     // const copiedLoginState = isLoginClicked.clicked;
 
@@ -64,6 +76,8 @@ export default function Form({ children }) {
 
     setiSignup(true);
   };
+
+  const authError = useSelector((state) => state.authReducer.error)
 
   // const stateToProps = useSelector((state) => state.modesReducer);
 
@@ -93,18 +107,32 @@ export default function Form({ children }) {
     authenticated = <Redirect to={authToProps.authRedirectPath} />;
   }
 
+  let errorMessage = null
+  if(authError){
+    if(authError.detail === 'Invalid credentials'){
+      errorMessage = 'Invalid credentials'
+    }else{
+      errorMessage = `${authError.email[0]}`
+    }
+  }
+
   return (
     <React.Fragment>
       {authenticated}
       <div className="FormStyle">
         <ul className="nav nav-tabs">
           <li className="active">
-            <a onClick={showLogin} href="#">
+            <a onClick={showLogin} style={{ color: loginColor }} href="#">
               lOGIN
             </a>
           </li>
           <li>
-            <a onClick={showSignup} href="#" className="signUpHeader">
+            <a
+              onClick={showSignup}
+              style={{ color: signUpColor }}
+              href="#"
+              className="signUpHeader"
+            >
               SIGN UP
             </a>
           </li>
@@ -117,6 +145,8 @@ export default function Form({ children }) {
           noValidate
         >
           <h1> {isLoginClicked.clicked ? "login" : "Sign up"}</h1>
+          <p className="invalidMessage"> {errorMessage}</p>
+
           <div className="form-group">
             <input
               autoComplete="off"
@@ -178,6 +208,15 @@ export default function Form({ children }) {
             <span>{isLoginClicked.clicked ? "login" : "Sign up"}</span>
             <i className="fas fa-arrow-circle-right"></i>
           </Button>
+
+          <br />
+          <Link
+            to="/forgotpassword"
+            className="forgot-password"
+            style={{ fontSize: "10px", fontSize: ".7rem" }}
+          >
+            Forgot Password?
+          </Link>
         </form>
       </div>
     </React.Fragment>

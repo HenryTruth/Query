@@ -1,0 +1,85 @@
+@keyframes slideFromTop {
+  from {
+    margin-top: -30rem;
+  }
+  to {
+    margin: 5rem;
+  }
+}
+
+@keyframes Wave {
+  0% {
+    background: rgba(77, 76, 76, 0.171);
+  }
+
+  100% {
+    background: rgb(223, 216, 216);
+  }
+
+  //   100% {
+  //     background: $skeletonCompBg;
+
+  //     opacity: 0.5;
+  //   }
+}
+
+@keyframes disappear {
+  //work more on this!!!
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  //work more on this!!!
+  0% {
+    margin-bottom: -2rem;
+  }
+  50% {
+    margin-bottom: -1rem;
+  }
+  100% {
+    margin-bottom: 0;
+  }
+}
+
+//////
+
+@mixin beautiful-motion {
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    transform: translateX(-50%);
+    background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(transparent),
+      color-stop(rgba(255, 255, 255, 0.2)),
+      to(transparent)
+    );
+
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+
+    /* Adding animation */
+    animation: loading 1s infinite;
+  }
+
+  /* Loading Animation */
+  @keyframes loading {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}

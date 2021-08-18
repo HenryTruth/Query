@@ -96,7 +96,10 @@ export const uploadProfile = (profileId,profileData,profileImage,profileImgName)
     // let post = {
     //     profileData:profileData,
     //     image:profileImage
-    //
+    // }
+    for (var pair of fd.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    }
     return dispatch => {
         axios.put(` https://querybackendapi.herokuapp.com/api/profiles/${profileId}/`, fd)
         .then(response => {
@@ -106,3 +109,20 @@ export const uploadProfile = (profileId,profileData,profileImage,profileImgName)
     }
 }
 
+export const deletePost = (id) => {
+    // var formdata = new FormData();
+
+    // var requestOptions = {
+    //     method: 'DELETE',
+    //     body: formdata,
+    //     redirect: 'follow'
+    // };
+
+    return dispatch => {
+        axios.delete(`https://querybackendapi.herokuapp.com/api/question/${id}/`)
+        .then(r => {
+            dispatch(requestProfileDetail(localStorage.getItem('username')))
+        })
+        .catch(e =>  console.log(e))
+    }
+}
