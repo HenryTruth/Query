@@ -10,9 +10,17 @@ export default function SideBar() {
     state.modesReducer)
 
   const dispatch = useDispatch()
+  const userState = useSelector(state => state.profileReducer.userDetail)
 
 
   // console.log(location.pathname, "from");
+
+  let image = user4
+
+  if(userState.length >= 1){
+    console.log(userState[0].image, 'does it exist')
+    image = `https://res.cloudinary.com/dyojwpsfb/${userState[0].image}`
+  }
 
   const darkModescolors = {
     background: "#1c1b22",
@@ -31,7 +39,7 @@ export default function SideBar() {
 
 
   const modeChangerHandler = () => {
-    if(stateToProps.modeColor == 'White'){
+    if(stateToProps.modeColor === 'White'){
       dispatch(actions.changemodes('Dark', 'White Mode', darkModescolors))
     }else{
       dispatch(actions.changemodes('White', 'Dark Mode', whiteModescolors))
@@ -60,10 +68,10 @@ export default function SideBar() {
                   }}
                 >
                   <div className="profilePicture">
-                    <img src={user4} alt="" />
+                    <img src={image} alt="" />
                   </div>
                   <div className="profileName">
-                    <h5>Gosling Mark</h5>
+                    <h5>{localStorage.getItem('username')}</h5>
                   </div>
                   <div className="profileAvater"></div>
                 </div>

@@ -16,7 +16,7 @@ export default function Date({ children, specialStyle,dateProps }) {
     >
       <span>
         <i className="far fa-clock"></i>
-         {/* {`${dateProps.slice(0, 10)} `}  */}
+         {`${dateProps} `} 
       </span>
     </div>
   );

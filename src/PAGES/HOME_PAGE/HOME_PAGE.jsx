@@ -157,7 +157,7 @@ export default function HOME_PAGE() {
               />
               <Date
               key={result.id}
-              dateProps={result.datePosted}
+              dateProps={result.datePosted.slice(0,10)}
                />
             </DetailsButtons>
           </QuestionBox>
@@ -184,7 +184,7 @@ export default function HOME_PAGE() {
               />
               <Date
               key={result.id}
-              dateProps={result.datePosted}
+              dateProps={result.datePosted.slice(0,10)}
                />
             </DetailsButtons>
           </QuestionBox>

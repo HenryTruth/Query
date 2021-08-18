@@ -116,7 +116,7 @@ export default function GET_QUESTION_PAGE() {
               likeIt={() => likeHandler(result.id, 'question')}
             />
             <AnswerButton answerProps={result.answerNum}/>
-            <Date dateProps={result.datePosted}/>
+            <Date dateProps={result.datePosted.slice(0,10)}/>
           </DetailsButtons>
           
         </QuestionBox>
@@ -144,7 +144,7 @@ export default function GET_QUESTION_PAGE() {
                 // commentFunc={toggleDiv}
                 commentProps={result.comment}
                 />
-                <Date dateProps={result.datePosted} />
+                <Date dateProps={result.datePosted.slice(0,10)} />
               </DetailsButtons>
               <div className="EnterYourCommentBlockArea" 
               >
