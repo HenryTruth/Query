@@ -45,11 +45,11 @@ export default function FixedRoundButton() {
     sideBarUlWrapperBg: "",
   };
 
-  console.log(stateToProps, 'jjjj')
+  // console.log(stateToProps, 'jjjj')
 
 
   const modeChangerHandler = () => {
-    if(stateToProps.modesColor == 'White'){
+    if(stateToProps.modesColor === 'White'){
       dispatchToProps('Dark', 'White Mode', whiteModescolors)
     }else{
       dispatchToProps('White', 'Dark Mode', darkModescolors)
@@ -63,9 +63,6 @@ export default function FixedRoundButton() {
     });
   };
 
-  const log = () => {
-    console.log("yes");
-  };
 
   let location = useLocation();
 

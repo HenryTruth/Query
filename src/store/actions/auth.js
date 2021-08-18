@@ -114,12 +114,11 @@ export const auth = (username, email, password, isSignup) => {
                 dispatch(checkAuthTimeout(300));
             })
             .catch(err => {
-                console.log(err)
-                dispatch(authFail(err.data));
+                console.log(err.response.data)
+                dispatch(authFail(err.response.data));
             });
     };
 };
-
 
 export const setAuthRedirectPath = (path) => {
     return {

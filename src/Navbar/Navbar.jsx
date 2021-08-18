@@ -14,7 +14,7 @@ export default function Navbar({ children }) {
   const dispatch = useDispatch();
   let location = useLocation();
 
-  console.log(location.pathname, "from");
+  // console.log(location.pathname, "from");
   return (
     <div
       className="NavbarStyle"

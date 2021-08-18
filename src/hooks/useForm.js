@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as actions from '../store/actions/index';
 
 const useForm = (callback, validate, isSignup) => {
@@ -37,7 +37,7 @@ const useForm = (callback, validate, isSignup) => {
     // console.log(values.username,values.email,values.password,isSignup)
     // setErrors(validate(values));
     setIsSubmitting(true);
-
+    console.log('got here for signup')
     dispatch(actions.auth(values.username,values.email,values.password,isSignup))
     
     // setValues('')

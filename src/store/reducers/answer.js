@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import { getAnswerQuestionArr } from '../actions/answer';
+// import { getAnswerQuestionArr } from '../actions/answer';
 import { updateObject } from '../utility';
 
 

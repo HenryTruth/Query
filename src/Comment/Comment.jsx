@@ -1,7 +1,7 @@
 import React from "react";
 import "./Comment.scss";
-import DetailsButtons from "../DetailsButtons/DetailsButtons";
-import { useSelector, useDispatch } from "react-redux";
+// import DetailsButtons from "../DetailsButtons/DetailsButtons";
+import { useSelector } from "react-redux";
 // import { changemodes } from "../actions/index";
 
 export default function Comment({
@@ -14,7 +14,7 @@ export default function Comment({
 }) {
   const stateToProps = useSelector(state => 
     state.modesReducer)
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <div

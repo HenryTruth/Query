@@ -8,6 +8,7 @@ const questionState = {
 }
 
 const getQuestion = (state, action) => {
+    // state.recentlyAskedQuestions.push(...action.questionData)
     return updateObject(state,{
         recentlyAskedQuestions:action.questionData
     })
@@ -25,5 +26,3 @@ const reducer = (state = questionState, action) => {
 }
 
 export default reducer
-
-

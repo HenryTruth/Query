@@ -8,7 +8,7 @@ const userModes = {
   themeColors: "",
   modeText: "Dark Mode",
 };
-console.log(userModes, "initial state");
+// console.log(userModes, "initial state");
 
 const changemodes = (state, action) => {
   return updateObject( state,{
