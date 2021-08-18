@@ -40,7 +40,7 @@ export const logout = () => {
 export const checkAuthTimeout = (expirationTime) => {
     return dispatch => {
         setTimeout(() => {
-            dispatch(refreshToken());
+            dispatch(logout());
         }, expirationTime * 1000);
     };
 };
@@ -49,7 +49,7 @@ export const checkAuthTimeout = (expirationTime) => {
 export const checkRefreshTimeout = (expirationTime) => {
     return dispatch => {
         setTimeout(() => {
-            dispatch(logout());
+            dispatch(refreshToken());
         }, expirationTime * 1000)
     }
 }

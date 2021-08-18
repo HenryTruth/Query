@@ -149,7 +149,7 @@ export default function PROFILE_PAGE() {
               <Like likeProps={result.likeNum}/>
               <AnswerButton answerProps={result.answerNum} />
               <Date
-              dateProps={result.datePosted}
+              dateProps={result.datePosted.slice(0,10)}
                />
             </DetailsButtons>
           </QuestionBox>
