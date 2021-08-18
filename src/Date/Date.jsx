@@ -1,12 +1,12 @@
 import React from "react";
 import "./Date.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 // import { changemodes } from "../actions";
 
 export default function Date({ children, specialStyle,dateProps }) {
   const stateToProps = useSelector(state => 
     state.modesReducer)
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
 
   return (

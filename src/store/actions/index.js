@@ -30,7 +30,8 @@ export{
 export {
     requestProfileDetail,
     uploadProfile,
-    requestUserDetails
+    requestUserDetails,
+    deletePost
 } from './profile'
 
 export {

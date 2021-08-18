@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
 import Wrapper from "./Wrapper/Wrapper";
 import Container from "./Container/Container";
@@ -12,6 +12,11 @@ import SELECTED_POST from "./PAGES/SELECTED_POST/SELECTED_POST";
 import FixedRoundButton from "./FixedRoundButton/FixedRoundButton";
 import HomeButton from "./HomeButton/HomeButton";
 import GET_QUESTION_PAGE from "./PAGES/GET_QUESTION_PAGE/GET_QUESTION_PAGE";
+
+// import { useSelector, useDispatch } from "react-redux";
+import {  Redirect } from "react-router-dom";
+// import { BrowserRouter as Router, useLocation } from "react-router-dom";
+=======
 import * as actions from './store/actions/index';
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -20,14 +25,15 @@ import {
   Redirect,
 } from "react-router-dom";
 
+
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 
 //error page
 import ErrorPage from "./ErrorPage/ErrorPage";
 
 function App() {
-  let location = useLocation();
-  var formdata = new FormData();
+  // let location = useLocation();
+  // var formdata = new FormData();
 
   let authenticated = localStorage.getItem("token") !== null;
 
@@ -51,7 +57,7 @@ function App() {
       </Switch>
     );
   }
-  console.log(routes, "routes");
+  //console.log(routes, 'routes')
 
   // useEffect(() => {
   //   axios

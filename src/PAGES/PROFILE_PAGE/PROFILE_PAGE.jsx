@@ -35,11 +35,13 @@ export default function PROFILE_PAGE() {
   const [smallModalState, SetSmallModalState] = useState(false);
   const [mounted, setmounted] = useState(true)
 
-  const openModal = () => {
+  const openModal = (id) => {
     SetModalState({
       isModalClose: false,
       useThisId: "ModalIsOpenId",
     });
+
+    dispatch(actions.deletePost(id));
   };
 
   const closeModal = () => {
@@ -140,7 +142,7 @@ export default function PROFILE_PAGE() {
               }}
             >
               <ul>
-                <li onClick={openModal}>Delete</li>
+                <li onClick={() => openModal(result.id)}>Delete</li>
               </ul>
             </div>
             <DetailsButtons>

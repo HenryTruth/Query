@@ -9,6 +9,8 @@ import { useEffect } from "react";
 // import useDisplayImage from '../hooks/useDisplayImage';
 // import { changemodes } from "../actions/index";
 
+import axios from 'axios';
+
 export default function Profile({ children }) {
   const stateToProps = useSelector(state => 
     state.modesReducer)
@@ -33,6 +35,8 @@ export default function Profile({ children }) {
   const [file, setFile] = useState(null)
   const [src, setSrc] = useState()
 
+  const [img, setImage] = useState()
+
   const openModal = () => {
     SetModalState({
       isModalClose: false,
@@ -46,15 +50,43 @@ export default function Profile({ children }) {
       useThisId: "ModalIsCloseId",
     });
 
-    setBio("click on the + icon to edit your bio");
+    // setBio("click on the + icon to edit your bio");
   };
 
-  const sendBioHandler = () => {
-    //POST REQUEST
+  // const sendBioHandler = () => {
+  //   //POST REQUEST
+  //   alert("posted");
+  //   setBio(bioRef.current.value);
+  //   closeModal();
+  // };
 
-    
-    alert("posted");
-    setBio(bioRef.current.value);
+  // -------- FETCHING AND DISPLAYING THE BIO IN THIS FUNCTION --------  //
+  useEffect(() => {
+    const username = localStorage.getItem('username')
+    setTimeout(() => {
+      axios.get(`https://querybackendapi.herokuapp.com/api/user/${username}`)
+      .then((r) => {
+        setBio(r.data.bio[0].bio);
+        setImage(r.data.bio[0].image)
+      })
+      .catch((e) => console.log(e))
+    }, 10)
+  },[]);
+
+  // ---------------------- UPDATING THE BIO --------------------------- //
+  const sendBioHandler = () => {
+    const arr = [img]
+    var formdata = new FormData();
+    formdata.append("bio", bio);
+    formdata.append('image', arr)
+
+    setTimeout(() => {
+      axios.put(`https://querybackendapi.herokuapp.com/api/profiles/${stateUserId}/`, formdata)
+        .then((r) => console.log(r, img))
+        .catch((e) => console.log(e.response.data))
+    },2000)
+
+    console.log('Bio submitted', bio);
     closeModal();
   };
 
@@ -65,14 +97,10 @@ export default function Profile({ children }) {
     console.log(bio);
   };
 
-
   useEffect(() => {
-    console.log('doest it dispatch')
     dispatch(actions.requestUserDetails(localStorage.getItem('username')))
   },[])
 
-
-  
 
 
   useEffect(() => {
@@ -82,21 +110,20 @@ export default function Profile({ children }) {
     if(file !== null){
       dispatch(actions.uploadProfile(stateUserId,bio, file, file.name))
     }
-
   },[file])
 
   
-  let image = user4
+  let image = user4;
 
   if(userState.length >= 1){
     console.log(userState[0].image, 'does it exist')
     image = `https://res.cloudinary.com/dyojwpsfb/${userState[0].image}`
+  };
+
+  const submitter = (e) => {
+    e.preventDefault();
   }
-
-
-
   
-
 
   return (
     <React.Fragment>
@@ -104,7 +131,7 @@ export default function Profile({ children }) {
         <Modal specialId={modalState.useThisId}>
           <div className="bioContent">
             <h3>start editing your bio</h3>
-            <form>
+            <form onSubmit={(e) => submitter(e)}>
               <textarea
                 ref={bioRef}
                 onChange={(event) => {
@@ -117,7 +144,7 @@ export default function Profile({ children }) {
               <div className="deleteContentButtonWrapper">
                 <SquareButton
                   type="submit"
-                  //  functionHandler={sendBioHandler}
+                  functionHandler={sendBioHandler}
                 >
                   Done
                 </SquareButton>
@@ -200,7 +227,7 @@ export default function Profile({ children }) {
               >
                 bio
               </div>
-              <p>{bio}</p>
+                <p>{bio}</p>
             </div>
             <div className="bioEdit" onClick={openModal}>
               <i className="fas fa-plus"></i>

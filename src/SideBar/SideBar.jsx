@@ -1,15 +1,34 @@
-import React, {useCallback} from "react";
+import React from "react";
+// import {useCallback, useEffect} from "react";
 import "./SideBar.scss";
 import { Link } from "react-router-dom";
 import user4 from "../assets/user4.jpg";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from '../store/actions/index';
+import { useHistory } from "react-router-dom";
+
 
 export default function SideBar() {
   const stateToProps = useSelector(state => 
     state.modesReducer)
 
   const dispatch = useDispatch()
+  const userState = useSelector(state => state.profileReducer.userDetail)
+
+  // useEffect(() => {
+    
+  //   console.log(userState, 'tototo')
+    
+  //     dispatch(actions.requestUserDetails(localStorage.getItem('username')))
+
+  // },[])
+
+  let image = user4
+
+  if(userState.length >= 1){
+    // console.log(userState[0].image, 'does it exist')
+    image = `https://res.cloudinary.com/dyojwpsfb/${userState[0].image}`
+  }
 
 
   // console.log(location.pathname, "from");
@@ -31,11 +50,23 @@ export default function SideBar() {
 
 
   const modeChangerHandler = () => {
-    if(stateToProps.modeColor == 'White'){
+    if(stateToProps.modeColor === 'White'){
       dispatch(actions.changemodes('Dark', 'White Mode', darkModescolors))
     }else{
       dispatch(actions.changemodes('White', 'Dark Mode', whiteModescolors))
     }
+  }
+
+  const localStorageClearer = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('expirationDate')
+    localStorage.removeItem('username')
+  }
+
+  const history = useHistory();
+  const logOutter = () => {
+    localStorageClearer();
+    history.push('/')
   }
 
 
@@ -108,7 +139,7 @@ export default function SideBar() {
               </Link>
             </div>
           </li>
-          <Link to="/" className="routerLinks">
+          <div onClick={logOutter} >
             <li
               className="links"
               style={{ background: `${stateToProps.themeColors.background}` }}
@@ -119,7 +150,7 @@ export default function SideBar() {
                 </Link>
               </div>
             </li>
-          </Link>
+          </div>
         </ul>
       </div>
     </div>

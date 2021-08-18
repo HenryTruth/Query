@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState} from "react";
+// import { Link } from "react-router-dom";
 import "./AddAnswerButton.scss";
 import Modal from "../Modal/Modal";
-import SquareButton from "../SquareButton/SquareButton";
-import * as handlers from "./../ModalState";
+// import SquareButton from "../SquareButton/SquareButton";
+// import * as handlers from "./../ModalState";
 
 import Question from "../QuestionBox/QuestionBox";
 import AnswerBox from "../AnswerBox/AnswerBox";
-import user4 from "../assets/user4.jpg";
-import user5 from "../assets/user5.jpg";
+// import user4 from "../assets/user4.jpg";
+// import user5 from "../assets/user5.jpg";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../store/actions/index";
 
@@ -19,7 +19,7 @@ export default function AddAnswerButton({ children, questionId }) {
 
   const askedQuestionData = useSelector(state => state.answerReducer.displayAnsweredQuestion)
 
-  const stateProfile = useSelector(state => state.profileReducer.userProfileData)
+  // const stateProfile = useSelector(state => state.profileReducer.userProfileData)
   
   const userState = useSelector(state => state.profileReducer.userDetail)
   const dispatch = useDispatch();
@@ -126,7 +126,8 @@ export default function AddAnswerButton({ children, questionId }) {
               <button className="sendThis" type="submit" 
               >
                 <img
-                onClick={sendAnswer}
+                  alt='img'
+                  onClick={sendAnswer}
                   src="https://img.icons8.com/color/50/000000/filled-sent.png"
                   className="sendThis"
                 />

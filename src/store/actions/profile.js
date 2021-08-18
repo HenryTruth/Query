@@ -87,7 +87,7 @@ export const requestProfileDetail = (username) => {
 
 
 export const uploadProfile = (profileId,profileData,profileImage,profileImgName) => {
-    console.log(profileImage,profileImgName, 'dat')
+    // console.log(profileImage,profileImgName, 'dat')
     // let image = profileImage
     // let imageName = profileImgName
 
@@ -109,3 +109,20 @@ export const uploadProfile = (profileId,profileData,profileImage,profileImgName)
     }
 }
 
+export const deletePost = (id) => {
+    // var formdata = new FormData();
+
+    // var requestOptions = {
+    //     method: 'DELETE',
+    //     body: formdata,
+    //     redirect: 'follow'
+    // };
+
+    return dispatch => {
+        axios.delete(`https://querybackendapi.herokuapp.com/api/question/${id}/`)
+        .then(r => {
+            dispatch(requestProfileDetail(localStorage.getItem('username')))
+        })
+        .catch(e =>  console.log(e))
+    }
+}
