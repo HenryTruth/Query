@@ -116,3 +116,20 @@
 .errorMessageHandler{
   color: red;
 }
+.ErrorMessageDiv{
+  color: red;
+}
+.ErrorMessageDiv button{
+  height: 30px;
+  width: 70px;
+  background-color: #fff;
+  color: #6099DB;
+  border-radius:8px;
+  border: 1px solid #6099DB;
+  letter-spacing: 1.5px;
+}
+.ErrorMessageDiv button:hover{
+  background-color: #6099DB;
+  border: 1px solid #fff;
+  color: #fff;
+}

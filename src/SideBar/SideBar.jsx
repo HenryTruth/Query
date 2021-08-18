@@ -25,12 +25,12 @@ export default function SideBar() {
 
   // },[])
 
-  let image = user4
+  // let image = user4
 
-  if(userState.length >= 1){
-    // console.log(userState[0].image, 'does it exist')
-    image = `https://res.cloudinary.com/dyojwpsfb/${userState[0].image}`
-  }
+  // if(userState.length >= 1){
+  //   // console.log(userState[0].image, 'does it exist')
+  //   image = `https://res.cloudinary.com/dyojwpsfb/${userState[0].image}`
+  // }
 
 
 

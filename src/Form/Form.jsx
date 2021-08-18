@@ -1,16 +1,24 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import { useSelector } from "react-redux";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 // import { useLocation } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import validate from "./LoginFormValidationRules";
+import * as actions from '../store/actions/index';
 
 import "./Form.scss";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 // import axios from "axios";
+
+const extStyle = {
+  background: 'red',
+  width: '200px',
+  height: '40px',
+  color: '#fff'
+}
 
 export default function Form({ children }) {
   // let location = useLocation();
@@ -30,6 +38,20 @@ export default function Form({ children }) {
   // const [authenticated, setAuthenticated] = useState()
 
   // let [authRedirect, setAuthRedirect] = useState()
+  const dispatch = useDispatch();
+  // const username = localStorage.getItem('username');
+
+  // let v = localStorage.getItem('username')
+  // let b = localStorage.getItem('token')
+
+  // useEffect(() => {
+  //     // console.log('Hello world')
+  //     if(b){
+  //       localStorage.removeItem('token')
+  //     }
+  // }, [b])
+
+  
 
   const { values, errors, handleChange, handleSubmit } = useForm(
     login,
@@ -107,14 +129,32 @@ export default function Form({ children }) {
     authenticated = <Redirect to={authToProps.authRedirectPath} />;
   }
 
+  const clearer = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('expirationDate');
+    localStorage.removeItem('tokenRefresh');
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 100)
+  }
+
   let errorMessage = null
   if(authError){
     if(authError.detail === 'Invalid credentials'){
       errorMessage = 'Invalid credentials'
+    }else if(authError.email === undefined){
+      errorMessage = <div className='ErrorMessageDiv'> logout to continue <button onClick={clearer}>Logout</button> </div>
     }else{
       errorMessage = `${authError.email[0]}`
     }
   }
+
+  // const username = localStorage.getItem('username')
+  // const clearer = () => {
+  //     dispatch(actions.logout())
+  // }
 
   return (
     <React.Fragment>
@@ -145,7 +185,7 @@ export default function Form({ children }) {
           noValidate
         >
           <h1> {isLoginClicked.clicked ? "login" : "Sign up"}</h1>
-          <p className="invalidMessage"> {errorMessage}</p>
+          <div className="invalidMessage"> {errorMessage}</div>
 
           <div className="form-group">
             <input
@@ -203,11 +243,10 @@ export default function Form({ children }) {
           )}
 </div>
          
-
-          <Button type="submit">
-            <span>{isLoginClicked.clicked ? "login" : "Sign up"}</span>
-            <i className="fas fa-arrow-circle-right"></i>
-          </Button>
+            <Button type="submit">
+              <span>{isLoginClicked.clicked ? "login" : "Sign up"}</span>
+              <i className="fas fa-arrow-circle-right"></i>
+            </Button>
 
           <br />
           <Link

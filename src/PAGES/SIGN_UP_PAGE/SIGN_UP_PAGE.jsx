@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./SIGN_UP_PAGE.scss";
 import Header from "../../Header/Header";
 import Form from "../../Form/Form";
@@ -14,6 +14,17 @@ import user8 from "../../assets/user8.jpg";
 import user7 from "../../assets/user7.jpg";
 
 function SIGN_UP_PAGE() {
+
+  // let v = localStorage.getItem('username')
+  // let b = localStorage.getItem('token')
+
+  // useEffect(() => {
+  //     // console.log('Hello world')
+  //     if(b){
+  //       localStorage.removeItem('token')
+  //     }
+  // }, [b])
+
   const specialQuestionStyle = {
     border: "1px solid  rgba(128, 128, 128, 0.267)",
   };
